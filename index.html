@@ -75,16 +75,16 @@ body {
 /* Content Styles */
 .content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 13px;
     background-color: #fff;
-    margin: 20px;
-    border-radius: 10px;
+    margin: 10px;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .content-section {
     display: none;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -94,6 +94,7 @@ body {
 .content-section h2 {
     margin-top: 0;
     color: #2c3e50;
+    text-align: center;
 }
 
 .content-section p {
@@ -130,6 +131,181 @@ body {
         margin: 10px;
     }
 }
+.precontainer {
+          max-width: 800px;
+          margin: 0 auto;
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+          text-align: center;
+          color: #333;
+        }
+        textarea {
+          width: 100%;
+          height: 150px;
+          padding: 10px;
+          font-family: monospace;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        select {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        button {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          background-color: #28a745;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #218838;
+        }
+        pre {
+          background: #282c34;
+          color: #abb2bf;
+          padding: 15px;
+          border-radius: 4px;
+          overflow-x: auto;
+          margin-top: 20px;
+          max-height: 600px;
+        }
+        .output {
+          margin-top: 20px;
+        }
+</style>
+<style>
+  .precontainer {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+      #codeInput {
+          width: 100%;
+          height: 150px;
+          padding: 10px;
+          font-family: monospace;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+      }
+
+      select {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+
+      button {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          background-color: #28a745;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      button:hover {
+          background-color: #218838;
+      }
+
+      pre {
+          background: #282c34;
+          color: #abb2bf;
+          padding: 15px;
+          border-radius: 4px;
+          overflow-x: auto;
+          margin-top: 20px;
+      }
+
+      .output {
+          margin-top: 20px;
+      }
+</style>
+<style>
+  .randomcolor {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+  }
+  .color-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 12px;
+  }
+  .color-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .color-box:hover {
+    transform: scale(1.1);
+  }
+  .randombtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 20%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .randombtn:hover {
+    background-color: #0056b3;
+  }
+  .randompre {
+    background-color: #282c34;
+    color: #2eb728;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+  code {
+    font-family: 'Courier New', Courier, monospace;
+  }
 </style>
 <body>
     <div class="container">
@@ -147,11 +323,11 @@ body {
                 </li>
                 <li class="nav-item" data-content="sunil">
                     <i class="fas fa-user"></i>
-                    <span>Sunil</span>
+                    <span>Pretag Generator</span>
                 </li>
                 <li class="nav-item" data-content="pricing">
                     <i class="fas fa-tag"></i>
-                    <span>Pricing</span>
+                    <span>Random Color</span>
                 </li>
                 <li class="nav-item" data-content="promotion">
                     <i class="fas fa-bullhorn"></i>
@@ -179,12 +355,30 @@ body {
                 <p>This is the My Menu section. Customize your menu options here.</p>
             </div>
             <div class="content-section" id="sunil">
-                <h2>Sunil</h2>
-                <p>This is the Sunil section. Personalize your profile here.</p>
+                <h2>Pretag Generator</h2>
+                <div class="precontainer">
+                  <textarea id="codeInput" placeholder="Enter your code here..."></textarea>
+                  <select id="languageSelect">
+                      <option value="html">HTML</option>
+                      <option value="css">CSS</option>
+                      <option value="js">JavaScript</option>
+                  </select>
+                  <button onclick="generatePreTag()">Generate Pre Tag</button>
+                  <div class="output">
+                      <h2>Output:</h2>
+                      <pre id="outputPre"><code id="outputCode"></code></pre>
+                  </div>
+              </div>
             </div>
             <div class="content-section" id="pricing">
-                <h2>Pricing</h2>
-                <p>This is the Pricing section. View and manage your pricing plans here.</p>
+                <h2>Random Color</h2>
+                <div class="randomcolor">
+                  <div class="color-container" id="colorContainer">
+                      <!-- Color boxes will be generated here -->
+                  </div>
+                <button class="randombtn" onclick="generateColors()">Generate Colors</button>
+                <pre class="randompre"><code id="codeSnippet">Click "Generate Colors" to see the magic!</code></pre>
+              </div>
             </div>
             <div class="content-section" id="promotion">
                 <h2>Promotion</h2>
@@ -226,4 +420,73 @@ body {
           document.getElementById('home').style.display = 'block';
       });</script>
 </body>
+<script>
+  function generatePreTag() {
+      const codeInput = document.getElementById('codeInput').value;
+      const languageSelect = document.getElementById('languageSelect').value;
+      const outputCode = document.getElementById('outputCode');
+
+      // Clear previous content
+      outputCode.innerHTML = '';
+
+      // Add syntax highlighting based on selected language
+      if (languageSelect === 'html') {
+          outputCode.innerHTML = highlightHTML(codeInput);
+      } else if (languageSelect === 'css') {
+          outputCode.innerHTML = highlightCSS(codeInput);
+      } else if (languageSelect === 'js') {
+          outputCode.innerHTML = highlightJS(codeInput);
+      }
+  }
+
+  function highlightHTML(code) {
+      return code.replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"(.*?)"/g, '<span style="color: #e06c75;">"$1"</span>')
+          .replace(/&lt;(.*?)&gt;/g, '<span style="color: #e06c75;">&lt;$1&gt;</span>');
+  }
+
+  function highlightCSS(code) {
+      return code.replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/(.*?):/g, '<span style="color: #e06c75;">$1</span>:')
+          .replace(/{/g, '<span style="color: #d19a66;">{</span>')
+          .replace(/}/g, '<span style="color: #d19a66;">}</span>');
+  }
+
+  function highlightJS(code) {
+      return code.replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\b(function|return|let|const|var|if|else|for|while|console)\b/g, '<span style="color: #c678dd;">$1</span>')
+          .replace(/(".*?"|'.*?')/g, '<span style="color: #98c379;">$1</span>');
+  }
+</script>
+<script>
+  function generateColors() {
+    const colorContainer = document.getElementById('colorContainer');
+    colorContainer.innerHTML = ''; // Clear previous colors
+
+    let colors = [];
+    for (let i = 0; i < 12; i++) {
+      const color = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+      colors.push(color);
+      const colorBox = document.createElement('div');
+      colorBox.className = 'color-box';
+      colorBox.style.backgroundColor = color;
+      colorBox.innerText = color;
+      colorBox.onclick = () => navigator.clipboard.writeText(color).then(() => alert(`Copied: ${color}`));
+      colorContainer.appendChild(colorBox);
+    }
+
+    // Update the code snippet
+    const codeSnippet = document.getElementById('codeSnippet');
+    codeSnippet.innerHTML = `Generated Colors:\n${colors.join('\n')}`;
+  }
+
+  // Initial color generation
+  generateColors();
+</script>
 </html>
