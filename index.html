@@ -307,6 +307,124 @@ body {
     font-family: 'Courier New', Courier, monospace;
   }
 </style>
+    <style>
+  .tgs {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+
+  .tagscontainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #inputTags {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  #outputTags {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .button-tagscontainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  #processBtn,
+  #copyBtn,
+  #nextBtn,
+  #pasteBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  #processBtn {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  #processBtn:hover {
+    background-color: #218838;
+  }
+
+  #copyBtn {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  #copyBtn:hover {
+    background-color: #0056b3;
+  }
+
+  #nextBtn {
+    background-color: #ffc107;
+    color: #000;
+  }
+
+  #nextBtn:hover {
+    background-color: #e0a800;
+  }
+
+  #pasteBtn {
+    background-color: #6c757d;
+    color: #fff;
+  }
+
+  #pasteBtn:hover {
+    background-color: #5a6268;
+  }
+
+  /* Animation for copied text */
+  @keyframes copied {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .copied {
+    animation: copied 0.5s ease;
+  }
+
+  #output {
+    margin-top: 20px;
+  }
+</style>
 <body>
     <div class="container">
         <!-- Sidebar -->
@@ -352,7 +470,21 @@ body {
             </div>
             <div class="content-section" id="mymenu">
                 <h2>My Menu</h2>
-                <p>This is the My Menu section. Customize your menu options here.</p>
+               <div class="tgs">
+  <div class="tagscontainer">
+    <textarea id="inputTags"
+      placeholder="Enter tags separated by commas (e.g., shorts, shorts video, trending shorts)"></textarea>
+    <div class="button-tagscontainer">
+      <button id="pasteBtn">Paste</button>
+      <button id="processBtn">Process Tags</button>
+      <button id="copyBtn">Copy Output</button>
+      <button id="nextBtn">Next Tags</button>
+    </div>
+    <div id="output">
+      <textarea id="outputTags" readonly placeholder="Processed output will appear here"></textarea>
+    </div>
+  </div>
+</div>
             </div>
             <div class="content-section" id="sunil">
                 <h2>Pretag Generator</h2>
@@ -488,5 +620,32 @@ body {
 
   // Initial color generation
   generateColors();
+</script>
+    <script>
+  document.getElementById('processBtn').addEventListener('click', function () {
+    const inputTags = document.getElementById('inputTags').value;
+    const processedTags = inputTags.replace(/,/g, '\n');
+    document.getElementById('outputTags').value = processedTags;
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', function () {
+    const outputTags = document.getElementById('outputTags');
+    outputTags.select();
+    document.execCommand('copy');
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', function () {
+    document.getElementById('inputTags').value = '';
+    document.getElementById('outputTags').value = '';
+  });
+
+  document.getElementById('pasteBtn').addEventListener('click', async function () {
+    try {
+      const text = await navigator.clipboard.readText();
+      document.getElementById('inputTags').value = text;
+    } catch (err) {
+      console.error('Failed to read clipboard contents: ', err);
+    }
+  });
 </script>
 </html>
