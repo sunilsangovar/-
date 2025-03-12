@@ -580,6 +580,167 @@
         background-color: #c82333;
     }
 </style>
+  <style>
+    .app-container {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .main-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 600px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .dropdown-container {
+      flex: 1;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      text-align: left;
+      display: none;
+    }
+
+    pre {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+
+    .copy-button, .powershell-button, .check-button {
+      margin-top: 10px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .powershell-button {
+      background-color: #ff5722;
+    }
+
+    .check-button {
+      background-color: #17a2b8;
+    }
+
+    .copy-button:hover, .powershell-button:hover, .check-button:hover {
+      opacity: 0.9;
+    }
+
+    .textarea-container {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .textarea-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      background-color: #066b17;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    textarea {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      resize: none;
+      height: 20px;
+      background-color: #313030;
+      color: #ffffff;
+      transition: border-color 0.3s ease;
+      width: calc(100% - 90px);
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .copy-textarea-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 80px;
+    }
+
+    .copy-textarea-button:hover {
+      background-color: #0056b3;
+      transform: translateY(-1px);
+    }
+
+    .copy-textarea-button:active {
+      transform: translateY(0);
+    }
+  </style>
 <body>
     <div class="container">
         <!-- Sidebar -->
@@ -623,6 +784,10 @@
                     <i class="fa-solid fa-download"></i>
                     <span>YT Video Download</span>
                   </a>
+                </li>
+                <li class="nav-item" data-content="Execution-Policy-Generator">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Execution Policy Generator</span>
                 </li>
                 <li class="nav-item" data-content="promotion">
                     <i class="fas fa-bullhorn"></i>
@@ -708,6 +873,57 @@
                     <button class="randombtn" onclick="generateColors()">Generate Colors</button>
                     <pre class="randompre"><code id="codeSnippet">Click "Generate Colors" to see the magic!</code></pre>
                 </div>
+            </div>
+            <div class="content-section" id="Execution-Policy-Generator">
+                <h2>Random Color</h2>
+                  <div class="app-container">
+    <div class="main-container">
+      <h1>Execution Policy Generator</h1>
+      <form id="policyForm">
+        <div class="form-group">
+          <div class="dropdown-container">
+            <label for="policyName">Execution Policy:</label>
+            <select id="policyName" required>
+              <option value="Restricted">Restricted</option>
+              <option value="AllSigned">AllSigned</option>
+              <option value="RemoteSigned">RemoteSigned</option>
+              <option value="Unrestricted">Unrestricted</option>
+              <option value="Bypass">Bypass</option>
+              <option value="Undefined">Undefined</option>
+            </select>
+          </div>
+          <div class="dropdown-container">
+            <label for="scope">Scope:</label>
+            <select id="scope" required>
+              <option value="Process">Process</option>
+              <option value="CurrentUser">CurrentUser</option>
+              <option value="LocalMachine">LocalMachine</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Generate Command</button>
+      </form>
+
+      <div id="output" class="output">
+        <h2>Generated Command:</h2>
+        <pre id="commandOutput"></pre>
+        <button class="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button class="powershell-button" onclick="runInPowerShell()">Run in PowerShell</button>
+      </div>
+
+      <div class="textarea-container">
+        <div class="textarea-group">
+          <textarea id="textArea1" readonly>(Get-ExecutionPolicy)</textarea>
+          <button class="copy-textarea-button" onclick="copyTextArea('textArea1')">Copy</button>
+        </div>
+        <div class="textarea-group">
+          <textarea id="textArea2" readonly>(Get-ExecutionPolicy -List)</textarea>
+          <button class="copy-textarea-button" onclick="copyTextArea('textArea2')">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
             </div>
             <div class="content-section" id="promotion">
                 <h2>Promotion</h2>
@@ -902,4 +1118,80 @@
         updateOutputLines(outputTags.value);
     }
 </script>
+      <script>
+    document.getElementById('policyForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const policyName = document.getElementById('policyName').value;
+      const scope = document.getElementById('scope').value;
+      const command = `Set-ExecutionPolicy -ExecutionPolicy ${policyName} -Scope ${scope}`;
+
+      document.getElementById('commandOutput').textContent = command;
+      document.getElementById('output').style.display = 'block';
+    });
+
+    function copyToClipboard() {
+      const commandOutput = document.getElementById('commandOutput');
+      const textToCopy = commandOutput.textContent;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            alert('Command copied to clipboard!');
+          })
+          .catch(() => {
+            copyUsingLegacyMethod(textToCopy);
+          });
+      } else {
+        copyUsingLegacyMethod(textToCopy);
+      }
+    }
+
+    function copyUsingLegacyMethod(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        alert('Command copied to clipboard!');
+      } catch (err) {
+        alert('Failed to copy command.');
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function runInPowerShell() {
+      const commandOutput = document.getElementById('commandOutput');
+      const command = commandOutput.textContent;
+
+      if (!command) {
+        alert('Please generate a command first.');
+        return;
+      }
+
+      alert(`To run this command in PowerShell:
+1. Open PowerShell.
+2. Paste the following command and press Enter:
+\n${command}`);
+    }
+
+    function copyTextArea(textAreaId) {
+      const textArea = document.getElementById(textAreaId);
+      const textToCopy = textArea.value;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            alert('Text copied to clipboard!');
+          })
+          .catch(() => {
+            copyUsingLegacyMethod(textToCopy);
+          });
+      } else {
+        copyUsingLegacyMethod(textToCopy);
+      }
+    }
+  </script>
 </html>
