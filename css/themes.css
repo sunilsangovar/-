@@ -1,0 +1,182 @@
+/* Theme Variables */
+:root {
+    /* Default Theme */
+    --default-primary: #4a6fa5;
+    --default-primary-rgb: 74, 111, 165;
+    --default-secondary: #47b39d;
+    --default-accent: #ffc857;
+    --default-bg: #f5f7fa;
+    --default-text: #333;
+    --default-border: #ddd;
+    --default-card-bg: #fff;
+    --default-header-bg: #1a3a5f;
+    --default-sidebar-bg: #2c5282;
+    --default-footer-bg: #1a3a5f;
+    --default-header-text: #ecf0f1;
+    --default-sidebar-text: #ecf0f1;
+    --default-sidebar-icon-bg: #ffffff;
+    --default-footer-text: #ecf0f1;
+    --default-section-title-color: #333;
+    --default-badge-bg-new: #2ecc71;
+    --default-badge-bg-trending: #f39c12;
+    --default-badge-bg-beta: #9b59b6;
+    --default-badge-bg-updated: #3498db;
+    
+    /* Dark Theme */
+    --dark-primary: #61a0af;
+    --dark-primary-rgb: 97, 160, 175;
+    --dark-secondary: #47b39d;
+    --dark-accent: #ffc857;
+    --dark-bg: #1a1a1a;
+    --dark-text: #8d8d8d;
+    --dark-border: #444;
+    --dark-card-bg: #2d2d2d;
+    --dark-header-bg: #1e272e;
+    --dark-sidebar-bg: #2d3436;
+    --dark-footer-bg: #1e272e;
+    --dark-header-text: #afafaf;
+    --dark-sidebar-text: #cfcbcb;
+    --dark-sidebar-icon-bg: #b7b7b738;
+    --dark-footer-text: #ecf0f1;
+    --dark-section-title-color: #767575;
+    --dark-badge-bg-new: #015826;
+    --dark-badge-bg-trending: #8f5700;
+    --dark-badge-bg-beta: #470064;
+    --dark-badge-bg-updated: #00548d;
+
+    
+    /* Light Theme */
+    --light-primary: #4a6fa5;
+    --light-primary-rgb: 74, 111, 165;
+    --light-secondary: #47b39d;
+    --light-accent: #ff9642;
+    --light-bg: #fff;
+    --light-text: #333;
+    --light-border: #eee;
+    --light-card-bg: #f9f9f9;
+    --light-header-bg: #4a6fa5;
+    --light-sidebar-bg: #5d7ea6;
+    --light-footer-bg: #4a6fa5;
+    --light-header-text: #fff;
+    --light-sidebar-text: #fff;
+    --light-sidebar-icon-bg: #ffffff;
+    --light-footer-text: #fff;
+    --light-section-title-color: #333;
+    --light-badge-bg-new: #2ecc71;
+    --light-badge-bg-trending: #f39c12;
+    --light-badge-bg-beta: #9b59b6;
+    --light-badge-bg-updated: #3498db;
+
+}
+
+/* Theme Styles */
+
+/* Default Theme */
+.theme-default {
+    --primary-color: var(--default-primary);
+    --primary-color-rgb: var(--default-primary-rgb);
+    --secondary-color: var(--default-secondary);
+    --accent-color: var(--default-accent);
+    --bg-color: var(--default-bg);
+    --text-color: var(--default-text);
+    --border-color: var(--default-border);
+    --card-bg: var(--default-card-bg);
+    --header-bg: var(--default-header-bg);
+    --sidebar-bg: var(--default-sidebar-bg);
+    --footer-bg: var(--default-footer-bg);
+    --sidebar-text: var(--default-sidebar-text);
+    --sidebar-icon-bg: var(--default-sidebar-icon-bg);
+    --header-text: var(--default-header-text);
+    --footer-text: var(--default-footer-text);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --section-title-color: var(--default-section-title-color);
+    --badge-bg-new: var(--default-badge-bg-new);
+    --badge-bg-trending: var(--default-badge-bg-trending);
+    --badge-bg-beta: var(--default-badge-bg-beta);
+    --badge-bg-updated: var(--default-badge-bg-updated);
+}
+
+/* Dark Theme */
+.theme-dark {
+    --primary-color: var(--dark-primary);
+    --primary-color-rgb: var(--dark-primary-rgb);
+    --secondary-color: var(--dark-secondary);
+    --accent-color: var(--dark-accent);
+    --bg-color: var(--dark-bg);
+    --text-color: var(--dark-text);
+    --border-color: var(--dark-border);
+    --card-bg: var(--dark-card-bg);
+    --header-bg: var(--dark-header-bg);
+    --sidebar-bg: var(--dark-sidebar-bg);
+    --footer-bg: var(--dark-footer-bg);
+    --sidebar-text: var(--dark-sidebar-text);
+    --sidebar-icon-bg: var(--dark-sidebar-icon-bg);
+    --header-text: var(--dark-header-text);
+    --footer-text: var(--dark-footer-text);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --section-title-color: var(--dark-section-title-color);
+    --badge-bg-new: var(--dark-badge-bg-new);
+    --badge-bg-trending: var(--dark-badge-bg-trending);
+    --badge-bg-beta: var(--dark-badge-bg-beta);
+    --badge-bg-updated: var(--dark-badge-bg-updated);
+
+}
+
+/* Light Theme */
+.theme-light {
+    --primary-color: var(--light-primary);
+    --primary-color-rgb: var(--light-primary-rgb);
+    --secondary-color: var(--light-secondary);
+    --accent-color: var(--light-accent);
+    --bg-color: var(--light-bg);
+    --text-color: var(--light-text);
+    --border-color: var(--light-border);
+    --card-bg: var(--light-card-bg);
+    --header-bg: var(--light-header-bg);
+    --sidebar-bg: var(--light-sidebar-bg);
+    --footer-bg: var(--light-footer-bg);
+    --sidebar-text: var(--light-sidebar-text);
+    --sidebar-icon-bg: var(--light-sidebar-icon-bg);
+    --header-text: var(--light-header-text);
+    --footer-text: var(--light-footer-text);
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --section-title-color: var(--light-section-title-color);
+    --badge-bg-new: var(--light-badge-bg-new);
+    --badge-bg-trending: var(--light-badge-bg-trending);
+    --badge-bg-beta: var(--light-badge-bg-beta);
+    --badge-bg-updated: var(--light-badge-bg-updated);
+
+}
+
+/* Dark Mode Override */
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: var(--dark-text);
+    --border-color: #333;
+    --card-bg: #1e1e1e;
+    --primary-color: var(--dark-primary);
+    --secondary-color: var(--dark-secondary);
+    --accent-color: var(--dark-accent);
+    --sidebar-bg: var(--dark-sidebar-bg);
+    --sidebar-text: var(--dark-sidebar-text);
+    --sidebar-icon-bg: var(--dark-sidebar-icon-bg);
+    --header-bg: var(--dark-header-bg);
+    --header-text: var(--dark-header-text);
+    --footer-bg: var(--dark-footer-bg);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --section-title-color: var(--dark-section-title-color);
+    --badge-bg-new: var(--dark-badge-bg-new);
+    --badge-bg-trending: var(--dark-badge-bg-trending);
+    --badge-bg-beta: var(--dark-badge-bg-beta);
+    --badge-bg-updated: var(--dark-badge-bg-updated);
+
+}
+
+/* Theme Transitions */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar, .header, .content, .tool-card, .breadcrumb, footer {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+} 

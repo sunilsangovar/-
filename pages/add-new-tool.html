@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Tool Guide - Advanced Tools Website</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/tool.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-default">
+    <!-- Header Section -->
+    <header>
+        <div class="header-left">
+            <button id="sidebar-toggle" class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="site-title">
+                <a href="../index.html">
+                    <i class="fas fa-tools"></i>
+                    <h1 id="site-title-text">Advanced Tools</h1>
+                </a>
+            </div>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search tools..." disabled>
+                <button id="search-button" disabled><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <div class="mobile-search-icon">
+                <button id="mobile-search-toggle"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="settings-dropdown">
+                <button class="settings-btn"><i class="fas fa-cog"></i></button>
+                <div class="settings-content">
+                    <div class="theme-selector">
+                        <p>Theme:</p>
+                        <button class="theme-btn" data-theme="default">Default</button>
+                        <button class="theme-btn" data-theme="dark">Dark</button>
+                        <button class="theme-btn" data-theme="light">Light</button>
+                    </div>
+                    <div class="dark-mode-toggle">
+                        <p>Dark Mode:</p>
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="profile-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-dropdown">
+                    <a href="pages/login.html">Login</a>
+                    <a href="pages/admin.html">Admin Panel</a>
+                    <a href="pages/logout.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar active" id="sidebar">
+            <nav class="sidebar-nav">
+                <ul id="tools-menu">
+                    <!-- Static tool links with direct paths -->
+                    <li><a href="../index.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+                    <li><a href="../tools/remove-tags-comma.html"><i class="fa-solid fa-tag"></i><span>Remove Tags Comma</span></a></li>
+                    <li><a href="../tools/add-hash-tags.html"><i class="fa-solid fa-hashtag"></i><span>Add Hash Tags</span></a></li>
+                    <li><a href="../tools/gemini-ai-tool.html"><i class="fa-solid fa-microchip"></i><span>Gemini AI Tool</span></a></li>
+                    <li><a href="../tools/age-calculator.html"><i class="fa-solid fa-calendar-days"></i><span>Age Calculator</span></a></li>
+                    <li><a href="../tools/resume-builder.html"><i class="fa-solid fa-user-pen"></i><span>Resume Builder</span></a></li>
+                    <li><a href="../tools/youtube-downloader.html"><i class="fab fa-youtube"></i><span>Youtube Downloader</span></a></li>
+                    <li><a href="../tools/youtube-thumbnail-downloader.html"><i class="fab fa-youtube"></i><span>YT Thumb Downloader</span></a></li>
+                    <li><a href="../tools/sitemap-generator.html"><i class="fa-solid fa-sitemap"></i><span>Sitemap Generator</span></a></li>
+                    <li><a href="../tools/rotate-video.html"><i class="fa-solid fa-video"></i><span>Video Rotate</span></a></li>
+                    <li><a href="../tools/loan-calculator.html"><i class="fas fa-money-bill"></i><span>Loan Calculator</span></a></li>
+                    <li><a href="../tools/qr-code-generator.html"><i class="fas fa-qrcode"></i><span>QR Code Generator</span></a></li>
+                    <li><a href="../tools/text-to-speech.html"><i class="fas fa-volume-up"></i><span>Text to Speech</span></a></li>
+                    <li><a href="../tools/background-remover.html"><i class="fas fa-cut"></i><span>Background Remover</span></a></li>
+                    <li><a href="../tools/merge-pdf.html"><i class="fas fa-file-pdf"></i><span>Merge PDF</span></a></li>
+                    <li><a href="../tools/online-calculator.html"><i class="fas fa-calculator"></i><span>Online Calculator</span></a></li>
+                    <li><a href="../tools/image-resizer.html"><i class="fas fa-file-audio"></i><span>Image Resizer</span></a></li>
+                    <li><a href="../tools/pdf-to-word.html"><i class="fas fa-edit"></i><span>PDF To Word</span></a></li>
+                    <li><a href="../tools/grammar-checker.html"><i class="fas fa-spell-check"></i><span>Grammar Checker</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb" id="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="separator">&gt;</span>
+                <span class="current-page">Add New Tool</span>
+            </div>
+            
+            <!-- Main Content Area -->
+            <main class="content" id="main-content">
+                <!-- Page Content -->
+                <div class="page-content">
+                    <h1><i class="fas fa-plus-circle"></i> Add New Tool Guide</h1>
+                    
+                    <div class="website-overview">
+                        <h2>Contributing to Advanced Tools</h2>
+                        <p class="overview-text">
+                            This guide will help you understand the process of adding a new tool to the Advanced Tools website. 
+                            By following these steps, you can ensure your tool integrates seamlessly with the existing structure.
+                        </p>
+                    </div>
+                    
+                    <h2>1. Understanding the Project Structure</h2>
+                    <div class="guide-section">
+                        <p>The website follows a specific directory structure:</p>
+                        <pre class="code-block">
+/
+├── index.html              # Main homepage
+├── css/
+│   ├── style.css           # Main stylesheet
+│   ├── themes.css          # Theme styles
+│   └── tool.css            # Tool-specific styles
+├── js/
+│   └── main.js             # Main JavaScript file
+├── tools/                  # Individual tool pages
+│   ├── text-analyzer.html
+│   ├── password-generator.html
+│   └── [other-tool].html
+├── pages/                  # Information pages
+│   ├── about.html
+│   ├── contact.html
+│   └── privacy.html
+└── [other pages].html</pre>
+                        <p>All tool-specific pages should be placed in the <code>tools/</code> directory.</p>
+                    </div>
+                    
+                    <h2>2. Creating a New Tool Page</h2>
+                    <div class="guide-section">
+                        <h3>Step 1: Create a new HTML file</h3>
+                        <p>Create a new HTML file in the <code>tools/</code> directory. Use kebab-case for the filename (e.g., <code>your-tool-name.html</code>).</p>
+                        
+                        <h3>Step 2: Use the template structure</h3>
+                        <p>Copy the structure from an existing tool page and modify it for your new tool. Here's the basic template:</p>
+                        
+                        <pre class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;[Your Tool Name] - Advanced Tools Website&lt;/title&gt;
+    &lt;link rel="stylesheet" href="../css/style.css"&gt;
+    &lt;link rel="stylesheet" href="../css/themes.css"&gt;
+    &lt;link rel="stylesheet" href="../css/tool.css"&gt;
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
+&lt;/head&gt;
+&lt;body class="theme-default"&gt;
+    &lt;!-- Header Section --&gt;
+    &lt;header&gt;
+        &lt;!-- Header content (same as other pages) --&gt;
+    &lt;/header&gt;
+    
+    &lt;!-- Main Content --&gt;
+    &lt;div class="container"&gt;
+        &lt;!-- Sidebar --&gt;
+        &lt;aside class="sidebar active" id="sidebar"&gt;
+            &lt;!-- Sidebar content (add your tool in the list) --&gt;
+        &lt;/aside&gt;
+        
+        &lt;!-- Content Wrapper --&gt;
+        &lt;div class="content-wrapper"&gt;
+            &lt;div class="breadcrumb" id="breadcrumb"&gt;
+                &lt;a href="/index.html"&gt;Home&lt;/a&gt;
+                &lt;span class="separator"&gt;&gt;&lt;/span&gt;
+                &lt;span class="current-page"&gt;[Your Tool Name]&lt;/span&gt;
+            &lt;/div&gt;
+            
+            &lt;main class="content" id="main-content"&gt;
+                &lt;!-- Your tool content goes here --&gt;
+            &lt;/main&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Footer --&gt;
+    &lt;footer&gt;
+        &lt;!-- Footer content (same as other pages) --&gt;
+    &lt;/footer&gt;
+    
+    &lt;!-- Scripts --&gt;
+    &lt;script src="../js/main.js"&gt;&lt;/script&gt;
+    &lt;!-- Add your tool-specific script here if needed --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                        
+                        <div class="alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Make sure to update paths to CSS and JS files with <code>../</code> since tool pages are in a subdirectory.</span>
+                        </div>
+                    </div>
+                    
+                    <h2>3. Developing Your Tool Interface</h2>
+                    <div class="guide-section">
+                        <p>Your tool's main content should include these sections:</p>
+                        
+                        <h3>Tool Header Section</h3>
+                        <pre class="code-block">
+&lt;div class="tool-header"&gt;
+    &lt;h1&gt;[Your Tool Name]&lt;/h1&gt;
+    &lt;p class="tool-description"&gt;
+        A brief description of what your tool does and its benefits to users.
+    &lt;/p&gt;
+&lt;/div&gt;</pre>
+                        
+                        <h3>Tool Content Section</h3>
+                        <pre class="code-block">
+&lt;div class="tool-container"&gt;
+    &lt;!-- Input Section --&gt;
+    &lt;div class="tool-section"&gt;
+        &lt;h2&gt;Input&lt;/h2&gt;
+        &lt;!-- Your tool's input controls go here --&gt;
+        &lt;div class="form-group"&gt;
+            &lt;!-- Example: --&gt;
+            &lt;label for="user-input"&gt;Enter your data:&lt;/label&gt;
+            &lt;input type="text" id="user-input" class="form-control"&gt;
+        &lt;/div&gt;
+        &lt;button id="process-btn" class="btn-primary"&gt;
+            &lt;i class="fas fa-cog"&gt;&lt;/i&gt; Process
+        &lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Output Section --&gt;
+    &lt;div class="tool-section"&gt;
+        &lt;h2&gt;Result&lt;/h2&gt;
+        &lt;div id="result-container"&gt;
+            &lt;!-- Results will be displayed here --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                        
+                        <h3>Instructions Section (Optional)</h3>
+                        <pre class="code-block">
+&lt;div class="tool-instructions"&gt;
+    &lt;h2&gt;How to Use This Tool&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;First step instructions...&lt;/li&gt;
+        &lt;li&gt;Second step instructions...&lt;/li&gt;
+        &lt;li&gt;Third step instructions...&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/div&gt;</pre>
+                    </div>
+                    
+                    <h2>4. Adding JavaScript Functionality</h2>
+                    <div class="guide-section">
+                        <p>Create a separate JavaScript file for your tool in a <code>js/tools/</code> directory (create it if it doesn't exist):</p>
+                        
+                        <pre class="code-block">
+// js/tools/your-tool-name.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const processBtn = document.getElementById('process-btn');
+    const userInput = document.getElementById('user-input');
+    const resultContainer = document.getElementById('result-container');
+    
+    // Add event listener
+    processBtn.addEventListener('click', function() {
+        // Get input value
+        const input = userInput.value.trim();
+        
+        if (!input) {
+            showError('Please enter some input');
+            return;
+        }
+        
+        // Process the data
+        const result = processData(input);
+        
+        // Display the result
+        displayResult(result);
+    });
+    
+    // Helper functions
+    function processData(input) {
+        // Your tool's core functionality goes here
+        return 'Processed: ' + input;
+    }
+    
+    function displayResult(result) {
+        resultContainer.innerHTML = `
+            <div class="result-item">
+                <h3>Output</h3>
+                <div class="result-content">${result}</div>
+                <button class="btn-secondary" onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        `;
+    }
+    
+    function showError(message) {
+        resultContainer.innerHTML = `
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>${message}</p>
+            </div>
+        `;
+    }
+    
+    // Additional helper functions as needed
+});
+
+// Function to copy result to clipboard
+function copyToClipboard() {
+    // Implementation here
+}</pre>
+                        
+                        <p>Then include your script in your HTML file:</p>
+                        <pre class="code-block">&lt;script src="../js/tools/your-tool-name.js"&gt;&lt;/script&gt;</pre>
+                    </div>
+                    
+                    <h2>5. Adding CSS Styles</h2>
+                    <div class="guide-section">
+                        <p>Most styles are already defined in the main CSS files. If you need tool-specific styles, add them to a new CSS file:</p>
+                        
+                        <pre class="code-block">
+/* css/tools/your-tool-name.css */
+
+.your-custom-class {
+    /* Your custom styles */
+}
+
+/* Add any tool-specific styles here */</pre>
+                        
+                        <p>Then include your CSS file in your HTML:</p>
+                        <pre class="code-block">&lt;link rel="stylesheet" href="../css/tools/your-tool-name.css"&gt;</pre>
+                        
+                        <div class="alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Try to use existing CSS classes from the main stylesheet whenever possible to maintain consistent styling.</span>
+                        </div>
+                    </div>
+                    
+                    <h2>6. Updating the Website</h2>
+                    <div class="guide-section">
+                        <h3>Step 1: Add to Sidebar Navigation</h3>
+                        <p>Add your tool to the sidebar navigation in your tool page and all other pages:</p>
+                        
+                        <pre class="code-block">
+&lt;li&gt;&lt;a href="tools/your-tool-name.html"&gt;&lt;i class="fas fa-[appropriate-icon]"&gt;&lt;/i&gt;&lt;span&gt;Your Tool Name&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</pre>
+                        
+                        <h3>Step 2: Add to Homepage</h3>
+                        <p>Add your tool to the appropriate section in <code>index.html</code>:</p>
+                        
+                        <pre class="code-block">
+&lt;a href="tools/your-tool-name.html" class="tool-card"&gt;
+    &lt;div class="tool-icon"&gt;&lt;i class="fas fa-[appropriate-icon]"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="tool-details"&gt;
+        &lt;h3&gt;Your Tool Name&lt;/h3&gt;
+        &lt;p&gt;Brief description of your tool&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/a&gt;</pre>
+                        
+                        <h3>Step 3: Update Search Tools</h3>
+                        <p>Add your tool to the search tools array in <code>js/main.js</code>:</p>
+                        
+                        <pre class="code-block">
+const tools = [
+    // Existing tools...
+    { 
+        name: "Your Tool Name", 
+        url: "tools/your-tool-name.html", 
+        icon: "fas fa-[appropriate-icon]", 
+        description: "Brief description of your tool" 
+    },
+];</pre>
+                    </div>
+                    
+                    <h2>7. Testing Your Tool</h2>
+                    <div class="guide-section">
+                        <p>Before submitting your tool, ensure it passes these tests:</p>
+                        
+                        <ul class="checklist">
+                            <li>The tool loads correctly in multiple browsers</li>
+                            <li>All functionality works as expected</li>
+                            <li>The page is responsive on both desktop and mobile</li>
+                            <li>The tool works in all themes and dark mode</li>
+                            <li>Navigation and search functionality includes your tool correctly</li>
+                            <li>The tool has proper error handling</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>8. Submission Process</h2>
+                    <div class="guide-section">
+                        <p>Once your tool is ready, follow these steps to submit it:</p>
+                        
+                        <ol>
+                            <li>Check that all files are named correctly and placed in the proper directories</li>
+                            <li>Verify that all links and paths are correct</li>
+                            <li>Make sure your code follows the project's coding standards</li>
+                            <li>Submit your work via pull request or as directed by the project maintainers</li>
+                        </ol>
+                        
+                        <div class="alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Your contribution is valuable! Thank you for helping to expand the Advanced Tools platform.</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="../pages/about.html">About</a>
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../pages/privacy.html">Privacy Policy</a>
+            <a href="../pages/sitemap.html">Sitemap</a>
+            <a href="../pages/add-new-tool.html">Add New Tool</a>
+            <a href="../pages/terms-of-conditions.html">Terms of Conditions</a>
+            <a href="../pages/cookie-consent.html">Cookie Consent</a>
+            <a href="../pages/disclaimer.html">Disclaimer</a>
+        </div>
+        <div class="copyright" id="copyright">
+            &copy; <span id="current-year">2023</span> Advanced Tools Website. All rights reserved.
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 

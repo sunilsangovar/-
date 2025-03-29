@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Tools Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/tool.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-default">
+    <!-- Header Section -->
+    <header>
+        <div class="header-left">
+            <button id="sidebar-toggle" class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="site-title">
+                <a href="index.html">
+                    <i class="fas fa-tools"></i>
+                    <h1 id="site-title-text">Advanced Tools</h1>
+                </a>
+            </div>
+        </div>
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search tools..." disabled>
+                <button id="search-button" disabled><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="mobile-search-icon">
+                <button id="mobile-search-toggle"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="settings-dropdown">
+                <button class="settings-btn"><i class="fas fa-cog"></i></button>
+                <div class="settings-content">
+                    <div class="theme-selector">
+                        <p>Theme:</p>
+                        <button class="theme-btn" data-theme="default">Default</button>
+                        <button class="theme-btn" data-theme="dark">Dark</button>
+                        <button class="theme-btn" data-theme="light">Light</button>
+                    </div>
+                    <div class="dark-mode-toggle">
+                        <p>Dark Mode:</p>
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="profile-image">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-dropdown">
+                    <a href="pages/login.html">Login</a>
+                    <a href="pages/admin.html">Admin Panel</a>
+                    <a href="pages/logout.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar active" id="sidebar">
+            <nav class="sidebar-nav">
+                <ul id="tools-menu">
+                    <!-- Static tool links with direct paths -->
+                    <li class="active"><a href="index.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+                    <li><a href="tools/remove-tags-comma.html"><i class="fa-solid fa-tag"></i><span>Remove Tags Comma</span></a></li>
+                    <li><a href="tools/add-hash-tags.html"><i class="fa-solid fa-hashtag"></i><span>Add Hash Tags</span></a></li>
+                    <li><a href="tools/gemini-ai-tool.html"><i class="fa-solid fa-microchip"></i><span>Gemini AI Tool</span></a></li>
+                    <li><a href="tools/age-calculator.html"><i class="fa-solid fa-calendar-days"></i><span>Age Calculator</span></a></li>
+                    <li><a href="tools/resume-builder.html"><i class="fa-solid fa-user-pen"></i><span>Resume Builder</span></a></li>
+                    <li><a href="tools/youtube-downloader.html"><i class="fab fa-youtube"></i><span>Youtube Downloader</span></a></li>
+                    <li><a href="tools/youtube-thumbnail-downloader.html"><i class="fab fa-youtube"></i><span>YT Thumb Downloader</span></a></li>
+                    <li><a href="tools/sitemap-generator.html"><i class="fa-solid fa-sitemap"></i><span>Sitemap Generator</span></a></li>
+                    <li><a href="tools/rotate-video.html"><i class="fa-solid fa-video"></i><span>Video Rotate</span></a></li>
+                    <li><a href="tools/loan-calculator.html"><i class="fas fa-money-bill"></i><span>Loan Calculator</span></a></li>
+                    <li><a href="tools/qr-code-generator.html"><i class="fas fa-qrcode"></i><span>QR Code Generator</span></a></li>
+                    <li><a href="tools/text-to-speech.html"><i class="fas fa-volume-up"></i><span>Text to Speech</span></a></li>
+                    <li><a href="tools/background-remover.html"><i class="fas fa-cut"></i><span>Background Remover</span></a></li>
+                    <li><a href="tools/merge-pdf.html"><i class="fas fa-file-pdf"></i><span>Merge PDF</span></a></li>
+                    <li><a href="tools/online-calculator.html"><i class="fas fa-calculator"></i><span>Online Calculator</span></a></li>
+                    <li><a href="tools/image-resizer.html"><i class="fas fa-file-audio"></i><span>Image Resizer</span></a></li>
+                    <li><a href="tools/pdf-to-word.html"><i class="fas fa-edit"></i><span>PDF To Word</span></a></li>
+                    <li><a href="tools/grammar-checker.html"><i class="fas fa-spell-check"></i><span>Grammar Checker</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="separator">></span>
+                <span class="current-page">Welcome</span>
+            </div>
+    
+            <div class="welcome-section">
+                <div class="welcome-content">
+                    <h1>Welcome to Our Tools Collection</h1>
+                    <p class="welcome-text">Discover a comprehensive suite of powerful online tools designed to make your work easier and more efficient. From text manipulation to image processing, we've got you covered.</p>
+                    <div class="welcome-features">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Fast & Efficient</h3>
+                            <p>Get instant results with our optimized tools</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Secure & Private</h3>
+                            <p>Your data is processed locally and never stored</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Friendly</h3>
+                            <p>Access our tools from any device</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>All Tools</h2>
+                <p>Explore our complete collection of online tools</p>
+            </div>
+
+            <!-- Main Content Area -->
+            <main class="content" id="main-content">
+                <div class="tools-grid">
+                    <a href="tools/remove-tags-comma.html" class="tool-card">
+                        <span class="tool-badge badge-new">New</span>
+                        <div class="tool-icon"><i class="fa-solid fa-tag"></i></div>
+                        <div class="tool-details">
+                            <h3>Remove Tags Comma</h3>
+                            <p>Remove tags and commas from text</p>
+                        </div>
+                    </a>
+                    <a href="tools/add-hash-tags.html" class="tool-card">
+                        <div class="tool-icon"><i class="fa-solid fa-hashtag"></i></div>
+                        <div class="tool-details">
+                            <h3>Add Hash Tags</h3>
+                            <p>Add hash tags to text</p>
+                        </div>
+                    </a>
+                    <a href="tools/gemini-ai-tool.html" class="tool-card">
+                        <span class="tool-badge badge-trending">Trending</span>
+                        <div class="tool-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="tool-details">
+                            <h3>Gemini AI Tool</h3>
+                            <p>Use Gemini AI to analyze text</p>
+                        </div>
+                    </a>
+                    <a href="tools/age-calculator.html" class="tool-card">
+                        <div class="tool-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                        <div class="tool-details">
+                            <h3>Age Calculator</h3>
+                            <p>Calculate exact age from birthdate</p>
+                        </div>
+                    </a>
+                    <a href="tools/resume-builder.html" class="tool-card">
+                        <span class="tool-badge badge-new">New</span>
+                        <div class="tool-icon"><i class="fa-solid fa-user-pen"></i></div>
+                        <div class="tool-details">
+                            <h3>Resume Builder</h3>
+                            <p>Create a professional resume</p>
+                        </div>
+                    </a>
+                    <a href="tools/youtube-downloader.html" class="tool-card">
+                        <span class="tool-badge badge-updated">Updated</span>
+                        <div class="tool-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="tool-details">
+                            <h3>Youtube Downloader</h3>
+                            <p>Download YouTube videos</p>
+                        </div>
+                    </a>
+                    <a href="tools/youtube-thumbnail-downloader.html" class="tool-card">
+                        <div class="tool-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="tool-details">
+                            <h3>YT Thumb Downloader</h3>
+                            <p>Download YouTube video thumbnails</p>
+                        </div>
+                    </a>
+                    <a href="tools/sitemap-generator.html" class="tool-card">
+                        <div class="tool-icon"><i class="fa-solid fa-sitemap"></i></div>
+                        <div class="tool-details">
+                            <h3>Sitemap Generator</h3>
+                            <p>Generate a sitemap for your website</p>
+                        </div>
+                    </a>
+                    <a href="tools/rotate-video.html" class="tool-card">
+                        <span class="tool-badge badge-new">New</span>
+                        <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
+                        <div class="tool-details">
+                            <h3>Video Rotate</h3>
+                            <p>Rotate videos to any angle</p>
+                        </div>
+                    </a>
+                    <a href="tools/loan-calculator.html" class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div class="tool-details">
+                            <h3>Loan Calculator</h3>
+                            <p>Calculate loan EMIs and payment schedules</p>
+                        </div>
+                    </a>
+                    <a href="tools/qr-code-generator.html" class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+                        <div class="tool-details">
+                            <h3>QR Code Generator</h3>
+                            <p>Generate custom QR codes for links and text</p>
+                        </div>
+                    </a>
+                    <a href="tools/text-to-speech.html" class="tool-card">
+                        <span class="tool-badge badge-trending">Trending</span>
+                        <div class="tool-icon"><i class="fas fa-volume-up"></i></div>
+                        <div class="tool-details">
+                            <h3>Text to Speech</h3>
+                            <p>Convert text to spoken audio</p>
+                        </div>
+                    </a>
+                    <a href="tools/background-remover.html" class="tool-card">
+                        <span class="tool-badge badge-trending">Trending</span>
+                        <div class="tool-icon"><i class="fas fa-cut"></i></div>
+                        <div class="tool-details">
+                            <h3>Background Remover</h3>
+                            <p>Remove backgrounds from images</p>
+                        </div>
+                    </a>
+                    <a href="tools/merge-pdf.html" class="tool-card">
+                        <span class="tool-badge badge-beta">Beta</span>
+                        <div class="tool-icon"><i class="fas fa-file-pdf"></i></div>
+                        <div class="tool-details">
+                            <h3>Merge PDF</h3>
+                            <p>Combine multiple PDF files into one</p>
+                        </div>
+                    </a>
+                    <a href="tools/online-calculator.html" class="tool-card">
+                        <span class="tool-badge badge-beta">Beta</span>
+                        <div class="tool-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="tool-details">
+                            <h3>Online Calculator</h3>
+                            <p>Calculate online</p>
+                        </div>
+                    </a>
+                    <a href="tools/image-resizer.html" class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-file-audio"></i></div>
+                        <div class="tool-details">
+                            <h3>Image Resizer</h3>
+                            <p>Resize images to any size</p>
+                        </div>
+                    </a>
+                    <a href="tools/pdf-to-word.html" class="tool-card">
+                        <div class="tool-icon"><i class="fas fa-edit"></i></div>
+                        <div class="tool-details">
+                            <h3>PDF To Word</h3>
+                            <p>Convert PDF files to Word documents</p>
+                        </div>
+                    </a>
+                    <a href="tools/grammar-checker.html" class="tool-card">
+                        <span class="tool-badge badge-beta">Beta</span>
+                        <div class="tool-icon"><i class="fas fa-spell-check"></i></div>
+                        <div class="tool-details">
+                            <h3>Grammar Checker</h3>
+                            <p>Check text for grammar and spelling errors</p>
+                        </div>
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="pages/about.html">About</a>
+            <a href="pages/contact.html">Contact</a>
+            <a href="pages/privacy.html">Privacy Policy</a>
+            <a href="pages/sitemap.html">Sitemap</a>
+            <a href="pages/add-new-tool.html">Add New Tool</a>
+            <a href="pages/terms-of-conditions.html">Terms of Conditions</a>
+            <a href="pages/cookie-consent.html">Cookie Consent</a>
+            <a href="pages/disclaimer.html">Disclaimer</a>
+        </div>
+        <div class="copyright" id="copyright">
+            &copy; <span id="current-year">2023</span> Advanced Tools Website. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
