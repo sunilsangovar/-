@@ -110,7 +110,232 @@
                     <div class="tool-input">
                         <h3>Remove Tags Comma</h3>
 
-                        <!--2025-->
+                                                <!--2025-->
+                        <p>Convert comma-separated tags into a line-by-line format</p>
+                        <style>
+
+                        .tagscontainer {
+                            width: 100%;
+                        }
+                        
+                        .tagscontainer p {
+                            font-size: 18px;
+                            color: #6c757d;
+                            margin-bottom: 15px;
+                            text-align: center;
+                        }
+                        
+                        #inputTags {
+                            width: 100%;
+                            height: 120px;
+                            border: 1px solid #ced4da;
+                            border-radius: 4px;
+                            padding: 12px;
+                            font-size: 16px;
+                            margin-bottom: 20px;
+                            transition: border-color 0.3s;
+                        }
+                        
+                        #inputTags:focus {
+                            outline: none;
+                            border-color: #80bdff;
+                            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                        }
+                        
+                        .button-tagscontainer {
+                            display: flex;
+                            justify-content: center;
+                            gap: 15px;
+                            margin-bottom: 20px;
+                        }
+                        
+                        button {
+                            padding: 12px 24px;
+                            font-size: 16px;
+                            font-weight: 500;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        }
+                        
+                        button:hover {
+                            transform: translateY(-3px);
+                            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                        }
+                        
+                        #pasteBtn {
+                            background-color: #6c757d;
+                            color: #fff;
+                        }
+                        
+                        #pasteBtn:hover {
+                            background-color: #5a6268;
+                        }
+                        
+                        #processBtn {
+                            background-color: #28a745;
+                            color: #fff;
+                        }
+                        
+                        #processBtn:hover {
+                            background-color: #218838;
+                        }
+                        
+                        #copyBtn {
+                            background-color: #007bff;
+                            color: #fff;
+                        }
+                        
+                        #copyBtn:hover {
+                            background-color: #0069d9;
+                        }
+                        
+                        #nextBtn {
+                            background-color: #ffc107;
+                            color: #212529;
+                        }
+                        
+                        #nextBtn:hover {
+                            background-color: #e0a800;
+                        }
+                        
+                        #output {
+                            margin-top: 20px;
+                        }
+                        
+                        #outputTags {
+                            width: 100%;
+                            height: 300px;
+                            border: 1px solid #ced4da;
+                            border-radius: 4px;
+                            padding: 12px;
+                            font-size: 16px;
+                            background-color: #f8f9fa;
+                        }
+                        
+                        /* Animation for copied text */
+                        @keyframes copied {
+                            0% {
+                                opacity: 1;
+                            }
+                            50% {
+                                opacity: 0.5;
+                            }
+                            100% {
+                                opacity: 1;
+                            }
+                        }
+                        
+                        .copied {
+                            animation: copied 0.5s ease;
+                        }
+                        
+                        /* Instructions section */
+                        .tool-instructions {
+                            background-color: #f8f9fa;
+                            padding: 20px 25px;
+                            border-top: 1px solid #e9ecef;
+                        }
+                        
+                        .tool-instructions h2 {
+                            margin-top: 0;
+                            font-size: 20px;
+                            color: #333;
+                            margin-bottom: 15px;
+                        }
+                        
+                        .tool-instructions ol {
+                            margin: 0;
+                            padding-left: 20px;
+                        }
+                        
+                        .tool-instructions li {
+                            margin-bottom: 10px;
+                            color: #495057;
+                        }
+                        
+                        /* Responsive design */
+                        @media (max-width: 768px) {
+                            .tool-wrapper {
+                                padding: 15px;
+                            }
+                            
+                            .button-tagscontainer {
+                                flex-wrap: wrap;
+                            }
+                            
+                            button {
+                                flex: 1 0 40%;
+                                margin-bottom: 10px;
+                            }
+                        }
+                        </style>
+                        <div class="tgs">
+                        <div class="tagscontainer">
+                            <textarea id="inputTags"
+                                placeholder="Enter tags separated by commas (e.g., shorts, shorts video, trending shorts)"></textarea>
+                            <div class="button-tagscontainer">
+                                <button id="pasteBtn"><i class="fas fa-paste"></i> Paste</button>
+                                <button id="processBtn"><i class="fas fa-cogs"></i> Process Tags</button>
+                                <button id="copyBtn"><i class="fas fa-copy"></i> Copy Output</button>
+                                <button id="nextBtn"><i class="fas fa-arrow-right"></i> Next Tags</button>
+                            </div>
+                            <div id="output">
+                                <textarea id="outputTags" readonly
+                                    placeholder="Processed output will appear here"></textarea>
+                            </div>
+                        </div>
+                        </div>      
+                        <div class="tool-instructions">
+                            <h2>How to use this tool:</h2>
+                            <ol>
+                                <li>Enter or paste tags separated by commas in the input box</li>
+                                <li>Click "Process Tags" to convert commas to line breaks</li>
+                                <li>Use "Copy Output" to copy the results to your clipboard</li>
+                                <li>Click "Next Tags" to clear both fields for a new batch</li>
+                            </ol>
+                        </div>
+                        <script>
+                            // Process Tags functionality
+                            document.getElementById('processBtn').addEventListener('click', function() {
+                                const inputTags = document.getElementById('inputTags').value;
+                                const processedTags = inputTags.replace(/,/g, '\n');
+                                document.getElementById('outputTags').value = processedTags;
+                            });
+                        
+                            // Copy Output functionality
+                            document.getElementById('copyBtn').addEventListener('click', function() {
+                                const outputTags = document.getElementById('outputTags');
+                                outputTags.select();
+                                document.execCommand('copy');
+                                
+                                // Add animation effect
+                                outputTags.classList.add('copied');
+                                setTimeout(() => {
+                                    outputTags.classList.remove('copied');
+                                }, 500);
+                            });
+                        
+                            // Next Tags functionality
+                            document.getElementById('nextBtn').addEventListener('click', function() {
+                                document.getElementById('inputTags').value = '';
+                                document.getElementById('outputTags').value = '';
+                                document.getElementById('inputTags').focus();
+                            });
+                        
+                            // Paste functionality
+                            document.getElementById('pasteBtn').addEventListener('click', async function() {
+                                try {
+                                    const text = await navigator.clipboard.readText();
+                                    document.getElementById('inputTags').value = text;
+                                } catch (err) {
+                                    console.error('Failed to read clipboard contents: ', err);
+                                    // Fallback for browsers that don't support the Clipboard API
+                                    alert('Clipboard access denied. Please paste manually.');
+                                }
+                            });
+                        </script>
 
                     </div>
                 </div>
