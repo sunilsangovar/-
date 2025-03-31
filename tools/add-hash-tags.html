@@ -111,6 +111,197 @@
                         <h3>Add Hash Tags</h3>
 
                         <!--2025-->
+                        <textarea id="inputTags2" placeholder="Enter tags separated by commas (e.g., shorts, shorts video, trending shorts)"></textarea>
+<div class="button-tagscontainer2">
+    <button id="pasteBtn2"><i class="fas fa-paste"></i> Paste</button>
+    <button id="processBtn2"><i class="fas fa-cogs"></i> Process Tags</button>
+    <button id="copyBtn2"><i class="fas fa-copy"></i> Copy Output</button>
+    <button id="nextBtn2"><i class="fas fa-arrow-right"></i> Next Tags</button>
+</div>
+<div id="output2">
+    <textarea id="outputTags2" readonly="" placeholder="Processed output will appear here"></textarea>
+    <div id="outputLines2"></div>
+</div>
+<style>
+    #inputTags2 {
+        width: 100%;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    #outputTags2 {
+        width: 100%;
+        height: 220px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .button-tagscontainer2 {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    #processBtn2,
+    #copyBtn2,
+    #nextBtn2,
+    #pasteBtn2 {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #processBtn2 {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    #processBtn2:hover {
+        background-color: #218838;
+    }
+
+    #copyBtn2 {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    #copyBtn2:hover {
+        background-color: #0056b3;
+    }
+
+    #nextBtn2 {
+        background-color: #ffc107;
+        color: #000;
+    }
+
+    #nextBtn2:hover {
+        background-color: #e0a800;
+    }
+
+    #pasteBtn2 {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    #pasteBtn2:hover {
+        background-color: #5a6268;
+    }
+
+    /* Animation for copied text */
+    @keyframes copied {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .copied {
+        animation: copied 0.5s ease;
+    }
+
+    #output2 {
+        margin-top: 20px;
+    }
+
+    .output-line2 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .output-line2 button {
+        margin-left: 10px;
+        width: fit-content;
+        padding: 4px 7px;
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .output-line2 button:hover {
+        background-color: #c82333;
+    }
+</style>
+<script>
+    document.getElementById('processBtn2').addEventListener('click', function () {
+        const inputTags = document.getElementById('inputTags2').value;
+        const processedTags = inputTags
+            .split(',')
+            .map(tag => tag.trim())
+            .map(tag => `#${tag.replace(/\s+/g, '')}`)
+            .join('\n');
+        document.getElementById('outputTags2').value = processedTags;
+        updateOutputLines(processedTags);
+    });
+
+    document.getElementById('copyBtn2').addEventListener('click', function () {
+        const outputTags = document.getElementById('outputTags2');
+        outputTags.select();
+        document.execCommand('copy');
+    });
+
+    document.getElementById('nextBtn2').addEventListener('click', function () {
+        document.getElementById('inputTags2').value = '';
+        document.getElementById('outputTags2').value = '';
+        document.getElementById('outputLines2').innerHTML = '';
+    });
+
+    document.getElementById('pasteBtn2').addEventListener('click', async function () {
+        try {
+            const text = await navigator.clipboard.readText();
+            document.getElementById('inputTags2').value = text;
+        } catch (err) {
+            console.error('Failed to read clipboard contents: ', err);
+        }
+    });
+
+    function updateOutputLines(processedTags) {
+        const outputLinesContainer = document.getElementById('outputLines2');
+        outputLinesContainer.innerHTML = '';
+        const lines = processedTags.split('\n');
+        lines.forEach((line, index) => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'output-line2';
+            lineDiv.textContent = line;
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', () => removeLine(index));
+            lineDiv.appendChild(removeButton);
+            outputLinesContainer.appendChild(lineDiv);
+        });
+    }
+
+    function removeLine(index) {
+        const outputTags = document.getElementById('outputTags2');
+        const lines = outputTags.value.split('\n');
+        lines.splice(index, 1);
+        outputTags.value = lines.join('\n');
+        updateOutputLines(outputTags.value);
+    }
+</script>
                         
                     </div>
                 </div>
