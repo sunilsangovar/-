@@ -9,6 +9,359 @@
     <link rel="stylesheet" href="../css/tool.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <meta name="tool-icon" content="fas fa-cut">
+    <style>
+    .calculator-card {
+    background-color: #f5f7fa;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 10px;
+    gap: 10px;
+}
+
+.input-section, .result-section {
+    width: 100%;
+    padding: 5px;
+}
+
+.input-card, .result-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.result-card {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-with-button {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-with-button input {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input[type="date"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.clear-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.clear-btn i {
+    font-size: 14px;
+}
+
+.clear-btn:hover {
+    background-color: #ff5252;
+}
+
+button[type="submit"] {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button[type="submit"] i {
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #3a7bc8;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.age-value {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #f0f7ff;
+}
+
+.number {
+    font-size: 26px;
+    font-weight: 700;
+    color: #4a90e2;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.label {
+    font-size: 12px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.next-birthday {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f0f7ff;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+.birthday-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.birthday-countdown .number {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.birthday-countdown .label {
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+#age-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Help sections styling */
+.help-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e1e8ed;
+}
+
+.help-section h3 {
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.help-section ul {
+    padding-left: 20px;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.help-section li {
+    margin-bottom: 4px;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 600px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    .calculator-card {
+        padding: 15px;
+        gap: 15px;
+        border-radius: 15px;
+    }
+    
+    .input-card, .result-card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .number {
+        font-size: 28px;
+    }
+    
+    label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    input[type="date"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .clear-btn, button[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Desktop screens */
+@media (min-width: 900px) {
+    body {
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 900px;
+    }
+    
+    .calculator-card {
+        flex-direction: row;
+        padding: 20px;
+        gap: 20px;
+        min-height: 500px;
+        align-items: flex-start;
+    }
+    
+    .input-section, .result-section {
+        flex: 1;
+        padding: 10px;
+        display: flex;
+        align-items: flex-start;
+        height: 100%;
+        min-height: 460px; /* Ensures consistent height */
+    }
+    
+    .input-card, .result-card {
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        height: 100%;
+        margin-top: 0;
+    }
+    
+    h1, h2 {
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-size: 28px;
+    }
+    
+    .input-with-button {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .clear-btn {
+        width: auto;
+        padding: 12px 15px;
+    }
+    
+    .clear-btn i {
+        font-size: 16px;
+    }
+    
+    .age-value {
+        margin: 5px 0;
+        padding: 5px;
+    }
+    
+    .number {
+        font-size: 32px;
+        margin-bottom: 5px;
+    }
+    
+    .label {
+        font-size: 14px;
+    }
+    
+    .next-birthday {
+        margin-top: 20px;
+        padding: 15px;
+    }
+    
+    .help-section {
+        margin-top: auto;
+        padding-top: 20px;
+    }
+    
+    .help-section h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .help-section ul {
+        font-size: 14px;
+    }
+    
+    button[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    button[type="submit"] i {
+        font-size: 18px;
+    }
+} 
+</style>
 </head>
 <body class="theme-default">
     <!-- Header Section -->
@@ -111,6 +464,69 @@
                         <h3>Age Calculator</h3>
 
                         <!--2025-->
+                        <div class="calculator-card">
+    <div class="input-section">
+        <div class="input-card">
+            <h1>Age Calculator</h1>
+            <form id="age-form">
+                <div class="input-group birthdate-inputs">
+                    <label for="birthdate">Enter your birth date:</label>
+                    <div class="input-with-button">
+                        <input type="date" id="birthdate" required>
+                        <button type="button" id="clear-birthdate" class="clear-btn"><i class="fas fa-trash-alt"></i> Clear</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="current-date">Enter today's date:</label>
+                    <input type="date" id="current-date" class="date-input" required>
+                </div>
+                <button type="submit" id="calculate-btn"><i class="fas fa-calculator"></i> Calculate</button>
+            </form>
+            <div class="help-section">
+                <h3>How to Use</h3>
+                <ul>
+                    <li>Enter your birth date</li>
+                    <li>Today's date is set automatically</li>
+                    <li>Click "Calculate" to see your age</li>
+                    <li>Use "Clear" to reset</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="result-section">
+        <div class="result-card">
+            <h2>Your Age</h2>
+            <div id="years" class="age-value">
+                <span class="number">--</span>
+                <span class="label">Years</span>
+            </div>
+            <div id="months" class="age-value">
+                <span class="number">--</span>
+                <span class="label">Months</span>
+            </div>
+            <div id="days" class="age-value">
+                <span class="number">--</span>
+                <span class="label">Days</span>
+            </div>
+            <div id="next-birthday" class="next-birthday" style="display: none;">
+                <span class="label">Time until next birthday:</span>
+                <div class="birthday-countdown">
+                    <span class="number" id="next-birthday-months">--</span>
+                    <span class="label">Months</span>
+                    <span class="number" id="next-birthday-days">--</span>
+                    <span class="label">Days</span>
+                </div>
+            </div>
+            <div class="help-section">
+                <h3>Understanding Results</h3>
+                <ul>
+                    <li>Your exact age in years, months, days</li>
+                    <li>Time until your next birthday</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
                         
                     </div>
                 </div>
@@ -137,5 +553,173 @@
 
     <!-- Scripts -->
     <script src="../js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const ageForm = document.getElementById('age-form');
+    const birthdateInput = document.getElementById('birthdate');
+    const currentDateInput = document.getElementById('current-date');
+    const clearBirthdateBtn = document.getElementById('clear-birthdate');
+    const yearsElement = document.querySelector('#years .number');
+    const monthsElement = document.querySelector('#months .number');
+    const daysElement = document.querySelector('#days .number');
+    const nextBirthdayDisplay = document.getElementById('next-birthday');
+    const nextBirthdayMonths = document.getElementById('next-birthday-months');
+    const nextBirthdayDays = document.getElementById('next-birthday-days');
+    
+    // Tab switching
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const birthdateInputs = document.querySelector('.birthdate-inputs');
+    const targetInputs = document.querySelector('.target-inputs');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            if (button.dataset.tab === 'birthdate') {
+                birthdateInputs.style.display = 'block';
+                targetInputs.style.display = 'none';
+                document.querySelector('h2').textContent = 'Your Age';
+            } else {
+                birthdateInputs.style.display = 'none';
+                targetInputs.style.display = 'block';
+                document.querySelector('h2').textContent = 'Target Date';
+            }
+        });
+    });
+
+    // Set initial dates
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayString = `${year}-${month}-${day}`;
+    
+    // Set max date for birthdate input
+    birthdateInput.max = todayString;
+    
+    // Set initial value for today's date
+    currentDateInput.value = todayString;
+
+    // Clear birthdate button
+    clearBirthdateBtn.addEventListener('click', () => {
+        birthdateInput.value = '';
+        yearsElement.textContent = '--';
+        monthsElement.textContent = '--';
+        daysElement.textContent = '--';
+        nextBirthdayDisplay.style.display = 'none';
+    });
+
+    // Update birthdate max when today's date changes
+    currentDateInput.addEventListener('change', () => {
+        birthdateInput.max = currentDateInput.value;
+        if (birthdateInput.value && new Date(birthdateInput.value) > new Date(currentDateInput.value)) {
+            birthdateInput.value = currentDateInput.value;
+        }
+    });
+
+    ageForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        calculateAge();
+    });
+
+    function calculateAge() {
+        const birthdate = new Date(birthdateInput.value);
+        const today = new Date(currentDateInput.value);
+        
+        // Validate the date
+        if (isNaN(birthdate.getTime()) || birthdate > today) {
+            alert("Please enter a valid date that's not in the future.");
+            return;
+        }
+
+        let years = today.getFullYear() - birthdate.getFullYear();
+        let months = today.getMonth() - birthdate.getMonth();
+        let days = today.getDate() - birthdate.getDate();
+
+        // Adjust for negative months or days
+        if (days < 0) {
+            const lastDayOfPrevMonth = new Date(
+                today.getFullYear(), 
+                today.getMonth(), 
+                0
+            ).getDate();
+            
+            days += lastDayOfPrevMonth;
+            months--;
+        }
+
+        if (months < 0) {
+            months += 12;
+            years--;
+        }
+
+        // Show results with animation
+        animateCounter(yearsElement, years);
+        animateCounter(monthsElement, months);
+        animateCounter(daysElement, days);
+        
+        // Calculate and show next birthday
+        calculateNextBirthday(birthdate, today);
+    }
+    
+    function calculateNextBirthday(birthdate, today) {
+        // Create next birthday date (same month and day, current year)
+        const nextBirthday = new Date(today.getFullYear(), birthdate.getMonth(), birthdate.getDate());
+        
+        // If birthday has passed this year, calculate for next year
+        if (nextBirthday < today) {
+            nextBirthday.setFullYear(today.getFullYear() + 1);
+        }
+        
+        // Calculate time until next birthday
+        let months = nextBirthday.getMonth() - today.getMonth();
+        let days = nextBirthday.getDate() - today.getDate();
+        
+        // Adjust for negative days
+        if (days < 0) {
+            const lastDayOfPrevMonth = new Date(
+                today.getFullYear(), 
+                today.getMonth() + 1, 
+                0
+            ).getDate();
+            
+            days += lastDayOfPrevMonth;
+            months--;
+        }
+        
+        // Adjust for negative months
+        if (months < 0) {
+            months += 12;
+        }
+        
+        // Show next birthday countdown
+        nextBirthdayDisplay.style.display = 'block';
+        nextBirthdayMonths.textContent = months;
+        nextBirthdayDays.textContent = days;
+    }
+
+    function animateCounter(element, targetValue) {
+        const duration = 1000; // Animation duration in ms
+        const startValue = parseInt(element.textContent) || 0;
+        const startTime = performance.now();
+        
+        function updateCounter(currentTime) {
+            const elapsedTime = currentTime - startTime;
+            
+            if (elapsedTime < duration) {
+                const progress = elapsedTime / duration;
+                const currentValue = Math.floor(startValue + progress * (targetValue - startValue));
+                element.textContent = currentValue;
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = targetValue;
+            }
+        }
+        
+        requestAnimationFrame(updateCounter);
+    }
+}); 
+</script>
 </body>
 </html> 
