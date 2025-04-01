@@ -111,6 +111,205 @@
                         <h3>Resume Builder</h3>
 
                         <!--2025-->
+                        <style>
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 95%;
+    padding: 8px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #218838;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+
+  .button-group button:nth-child(2) {
+    background-color: #dc3545;
+  }
+
+  .button-group button:nth-child(2):hover {
+    background-color: #c82333;
+  }
+
+  .bio-data {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    display: none;
+    /* Hidden by default */
+  }
+
+  .bio-data h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .print-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  @media print {
+
+    /* Hide everything except the bio-data output */
+    body * {
+      visibility: hidden;
+    }
+
+    .bio-data,
+    .bio-data * {
+      visibility: visible;
+    }
+
+    .bio-data {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      border: none;
+      box-shadow: none;
+    }
+  }
+</style>
+<div class="container1">
+  <h1>Bio-Data Generator</h1>
+  <form id="bioDataForm">
+    <div style="display: flex; gap: 20px;">
+      <div style="flex: 1;">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+      </div>
+      <div style="flex: 1;">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+      </div>
+    </div>
+    <div style="display: flex; gap: 20px;">
+      <div style="flex: 1;">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div style="flex: 1;">
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" required>
+      </div>
+    </div>
+    <label for="address">Address:</label>
+    <textarea id="address" rows="3" required></textarea>
+
+    <label for="education">Education:</label>
+    <textarea id="education" rows="3" required></textarea>
+
+    <label for="experience">Work Experience:</label>
+    <textarea id="experience" rows="3" required></textarea>
+
+    <label for="skills">Skills:</label>
+    <textarea id="skills" rows="3" required></textarea>
+
+    <div class="button-group">
+      <button type="button" onclick="generateBioData()">Generate Bio-Data</button>
+      <button type="button" onclick="clearForm()">Clear</button>
+    </div>
+  </form>
+
+  <div id="bioDataOutput" class="bio-data">
+    <h2>Generated Bio-Data</h2>
+    <div class="two-column">
+      <div>
+        <p><strong>Name:</strong> <span id="outputName"></span></p>
+        <p><strong>Email:</strong> <span id="outputEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="outputPhone"></span></p>
+        <p><strong>Address:</strong> <span id="outputAddress"></span></p>
+      </div>
+      <div>
+        <p><strong>Education:</strong> <span id="outputEducation"></span></p>
+        <p><strong>Work Experience:</strong> <span id="outputExperience"></span></p>
+        <p><strong>Skills:</strong> <span id="outputSkills"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="print-button">
+    <button onclick="printBioData()">Print Bio-Data</button>
+  </div>
+</div>
+<script>
+  function generateBioData() {
+    // Get input values
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const education = document.getElementById('education').value;
+    const experience = document.getElementById('experience').value;
+    const skills = document.getElementById('skills').value;
+
+    // Display values in the output section
+    document.getElementById('outputName').textContent = firstName + ' ' + lastName;
+    document.getElementById('outputEmail').textContent = email;
+    document.getElementById('outputPhone').textContent = phone;
+    document.getElementById('outputAddress').textContent = address;
+    document.getElementById('outputEducation').textContent = education;
+    document.getElementById('outputExperience').textContent = experience;
+    document.getElementById('outputSkills').textContent = skills;
+
+    // Show the bio-data output section
+    document.getElementById('bioDataOutput').style.display = 'block';
+  }
+
+  function clearForm() {
+    // Reset all form fields
+    document.getElementById('bioDataForm').reset();
+
+    // Hide the bio-data output section
+    document.getElementById('bioDataOutput').style.display = 'none';
+  }
+
+  function printBioData() {
+    // Check if bio-data is generated
+    if (document.getElementById('bioDataOutput').style.display === 'block') {
+      window.print(); // Trigger print
+    } else {
+      alert("Please generate bio-data first.");
+    }
+  }
+</script>
                         
                     </div>
                 </div>
