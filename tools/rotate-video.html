@@ -111,6 +111,1472 @@
                         <h3>Video Rotate</h3>
 
                         <!--2025-->
+                                                <div class="video-rotate-container">
+                            <div class="upload-section">
+                                <input type="file" id="video-input" accept="video/*" class="file-input">
+                                <label for="video-input" class="file-label">
+                                    <i class="fas fa-upload"></i> Choose Video
+                                </label>
+                                <p class="file-info">Supported formats: MP4, WebM, OGG (Max: 100MB)</p>
+                            </div>
+                            
+                            <div class="video-rotate-layout">
+                                <div class="controls-column">
+                                    <div class="rotation-controls" id="rotation-controls" style="display: none;">
+                                        <h4>3D Rotation Controls</h4>
+                                        
+                                        <!-- X-Axis Control -->
+                                        <div class="rotation-control x-axis-control">
+                                            <div class="control-label">
+                                                <div class="axis-badge x-badge">X</div>
+                                                <span>X-Axis: <span id="x-value">0°</span></span>
+                                            </div>
+                                            <div class="slider-container">
+                                                <div class="slider-marks">
+                                                    <span>-180°</span>
+                                                    <span>-90°</span>
+                                                    <span>0°</span>
+                                                    <span>90°</span>
+                                                    <span>180°</span>
+                                                </div>
+                                                <input type="range" id="x-slider" min="-180" max="180" value="0" class="rotate-slider rotate-enhanced-slider">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Y-Axis Control -->
+                                        <div class="rotation-control y-axis-control">
+                                            <div class="control-label">
+                                                <div class="axis-badge y-badge">Y</div>
+                                                <span>Y-Axis: <span id="y-value">0°</span></span>
+                                            </div>
+                                            <div class="slider-container">
+                                                <div class="slider-marks">
+                                                    <span>-180°</span>
+                                                    <span>-90°</span>
+                                                    <span>0°</span>
+                                                    <span>90°</span>
+                                                    <span>180°</span>
+                                                </div>
+                                                <input type="range" id="y-slider" min="-180" max="180" value="0" class="rotate-slider rotate-enhanced-slider">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Z-Axis Control -->
+                                        <div class="rotation-control z-axis-control">
+                                            <div class="control-label">
+                                                <div class="axis-badge z-badge">Z</div>
+                                                <span>Z-Axis: <span id="z-value">0°</span></span>
+                                            </div>
+                                            <div class="slider-container">
+                                                <div class="slider-marks">
+                                                    <span>-180°</span>
+                                                    <span>-90°</span>
+                                                    <span>0°</span>
+                                                    <span>90°</span>
+                                                    <span>180°</span>
+                                                </div>
+                                                <input type="range" id="z-slider" min="-180" max="180" value="0" class="rotate-slider rotate-enhanced-slider">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Scale/Zoom Control -->
+                                        <div class="rotation-control scale-control">
+                                            <div class="control-label">
+                                                <div class="axis-badge scale-badge">S</div>
+                                                <span>Scale: <span id="scale-value">100%</span></span>
+                                            </div>
+                                            <div class="slider-container">
+                                                <div class="slider-marks">
+                                                    <span>50%</span>
+                                                    <span>75%</span>
+                                                    <span>100%</span>
+                                                    <span>125%</span>
+                                                    <span>150%</span>
+                                                </div>
+                                                <input type="range" id="scale-slider" min="50" max="150" value="100" class="rotate-slider rotate-enhanced-slider">
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Preset Views -->
+                                        <div class="preset-views">
+                                            <h5>Preset Views</h5>
+                                            <div class="preset-view-buttons">
+                                                <button class="view-btn" data-x="0" data-y="0" data-z="0">Front</button>
+                                                <button class="view-btn" data-x="0" data-y="180" data-z="0">Back</button>
+                                                <button class="view-btn" data-x="0" data-y="90" data-z="0">Right</button>
+                                                <button class="view-btn" data-x="0" data-y="-90" data-z="0">Left</button>
+                                                <button class="view-btn" data-x="90" data-y="0" data-z="0">Top</button>
+                                                <button class="view-btn" data-x="-90" data-y="0" data-z="0">Bottom</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Animation Control -->
+                                        <div class="animation-control">
+                                            <h5>Animation</h5>
+                                            <div class="animation-options">
+                                                <label class="anim-checkbox">
+                                                    <input type="checkbox" id="auto-rotate"> 
+                                                    <span>Auto-rotate</span>
+                                                </label>
+                                                <select id="animation-type">
+                                                    <option value="y">Y-axis Spin</option>
+                                                    <option value="x">X-axis Spin</option>
+                                                    <option value="z">Z-axis Spin</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Video Playback Controls -->
+                                        <div class="playback-control">
+                                            <h5>Video Controls</h5>
+                                            <div class="playback-buttons">
+                                                <button id="play-btn" class="action-btn play">
+                                                    <i class="fas fa-play"></i> Play
+                                                </button>
+                                                <button id="pause-btn" class="action-btn pause">
+                                                    <i class="fas fa-pause"></i> Pause
+                                                </button>
+                                            </div>
+                                            
+                                            <!-- Video Timeline Slider -->
+                                            <div class="video-timeline-container">
+                                                <div class="timeline-info">
+                                                    <span id="current-time">0:00</span>
+                                                    <span id="total-time">0:00</span>
+                                                </div>
+                                                <input type="range" id="video-timeline" min="0" max="100" value="0" class="timeline-slider rotate-enhanced-slider">
+                                                <div class="timeline-markers">
+                                                    <span></span><span></span><span></span><span></span><span></span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="video-options">
+                                                <label class="option-checkbox">
+                                                    <input type="checkbox" id="tv-border"> 
+                                                    <span>TV Monitor Border</span>
+                                                </label>
+                                                <label class="option-checkbox">
+                                                    <input type="checkbox" id="tv-stand-toggle" checked> 
+                                                    <span>TV Stand</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- TV Logo Customization -->
+                                        <div class="tv-logo-customization">
+                                            <h5>TV Logo</h5>
+                                            <div class="logo-input-container">
+                                                <input type="text" id="tv-logo-text" placeholder="Enter custom logo" value="UltraView HD" maxlength="15">
+                                                <button id="apply-logo-btn" class="action-btn">Apply</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Reset & Export -->
+                                        <div class="control-actions">
+                                            <button id="reset-btn" class="action-btn reset">Reset Rotation</button>
+                                            <button id="export-btn" class="action-btn export">Export Video</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="preview-column">
+                                    <div class="video-preview-container">
+                                        <div id="video-wrapper">
+                                            <video id="video-preview"></video>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                            /* Container Styles */
+                            .video-rotate-container {
+                                max-width: 1200px;
+                                margin: 0 auto;
+                                padding: 0 15px;
+                            }
+                            
+                            /* Dark Mode Toggle Switch - Completely Renamed */
+                            .dm-switch {
+                                position: relative;
+                                display: inline-block;
+                                width: 40px;
+                                height: 20px;
+                            }
+                            
+                            .dm-switch input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                            }
+                            
+                            .dm-slider {
+                                position: absolute;
+                                cursor: pointer;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background-color: #ccc;
+                                transition: .4s;
+                            }
+                            
+                            .dm-slider:before {
+                                position: absolute;
+                                content: "";
+                                height: 16px;
+                                width: 16px;
+                                left: 2px;
+                                bottom: 2px;
+                                background-color: white;
+                                transition: .4s;
+                            }
+                            
+                            input:checked + .dm-slider {
+                                background-color: var(--primary-color, #3498db);
+                            }
+                            
+                            input:checked + .dm-slider:before {
+                                transform: translateX(20px);
+                            }
+                            
+                            .dm-round {
+                                border-radius: 20px;
+                            }
+                            
+                            .dm-round:before {
+                                border-radius: 50%;
+                            }
+                            
+                            /* Upload Section */
+                            .upload-section {
+                                text-align: center;
+                                margin-bottom: 20px;
+                                padding: 20px;
+                                border: 2px dashed #ccc;
+                                border-radius: 8px;
+                                background-color: #f9f9f9;
+                            }
+                            
+                            .file-input {
+                                display: none;
+                            }
+                            
+                            .file-label {
+                                display: inline-block;
+                                padding: 10px 20px;
+                                background-color: #4CAF50;
+                                color: white;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                font-weight: bold;
+                                transition: background-color 0.3s;
+                            }
+                            
+                            .file-label:hover {
+                                background-color: #45a049;
+                            }
+                            
+                            .file-info {
+                                margin-top: 10px;
+                                font-size: 14px;
+                                color: #666;
+                            }
+                            
+                            /* Layout */
+                            .video-rotate-layout {
+                                display: flex;
+                                gap: 20px;
+                            }
+                            
+                            .controls-column {
+                                flex: 0 0 300px;
+                                max-height: 600px;
+                                overflow-y: auto;
+                                background-color: #f5f5f5;
+                                border-radius: 8px;
+                                padding: 15px;
+                            }
+                            
+                            .preview-column {
+                                flex: 1;
+                                display: flex;
+                                justify-content: center;
+                                align-items: flex-start;
+                                min-height: 300px;
+                            }
+                            
+                            /* Rotation Controls */
+                            .rotation-controls {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 20px;
+                            }
+                            
+                            .rotation-control {
+                                background-color: white;
+                                border-radius: 8px;
+                                padding: 15px;
+                                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                            }
+                            
+                            .control-label {
+                                display: flex;
+                                align-items: center;
+                                margin-bottom: 10px;
+                                font-weight: bold;
+                            }
+                            
+                            .axis-badge {
+                                width: 24px;
+                                height: 24px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: white;
+                                font-weight: bold;
+                                margin-right: 8px;
+                            }
+                            
+                            .x-badge { background-color: #e74c3c; }
+                            .y-badge { background-color: #2ecc71; }
+                            .z-badge { background-color: #3498db; }
+                            .scale-badge { background-color: #9b59b6; }
+                            
+                            .x-axis-control { border-left: 4px solid #e74c3c; }
+                            .y-axis-control { border-left: 4px solid #2ecc71; }
+                            .z-axis-control { border-left: 4px solid #3498db; }
+                            .scale-control { border-left: 4px solid #9b59b6; }
+                            
+                            .control-slider {
+                                margin-bottom: 10px;
+                            }
+                            
+                            .slider {
+                                width: 100%;
+                                height: 8px;
+                                background: #ddd;
+                                outline: none;
+                                border-radius: 4px;
+                                transition: all 0.3s;
+                                margin: 10px 0;
+                            }
+                            
+                            .rotate-slider {
+                                width: 100%;
+                                height: 8px;
+                                background: #ddd;
+                                outline: none;
+                                border-radius: 4px;
+                                transition: all 0.3s;
+                                margin: 10px 0;
+                            }
+                            
+                            .enhanced-slider {
+                                height: 12px;
+                                background: linear-gradient(to right, #f0f0f0, #ddd);
+                                cursor: pointer;
+                            }
+                            
+                            .rotate-enhanced-slider {
+                                height: 12px;
+                                background: linear-gradient(to right, #f0f0f0, #ddd);
+                                cursor: pointer;
+                            }
+                            
+                            .rotate-enhanced-slider::-webkit-slider-thumb {
+                                -webkit-appearance: none;
+                                appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background: currentColor;
+                                cursor: pointer;
+                                border: 2px solid white;
+                            }
+                            
+                            .rotate-enhanced-slider::-moz-range-thumb {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background: currentColor;
+                                cursor: pointer;
+                                border: 2px solid white;
+                            }
+                            
+                            .x-axis-control .rotate-enhanced-slider {
+                                color: #e74c3c;
+                            }
+                            
+                            .y-axis-control .rotate-enhanced-slider {
+                                color: #2ecc71;
+                            }
+                            
+                            .z-axis-control .rotate-enhanced-slider {
+                                color: #3498db;
+                            }
+                            
+                            .scale-control .rotate-enhanced-slider {
+                                color: #9b59b6;
+                            }
+                            
+                            .control-buttons {
+                                display: flex;
+                                gap: 5px;
+                                flex-wrap: wrap;
+                            }
+                            
+                            .preset-btn {
+                                padding: 3px 8px;
+                                background-color: #f0f0f0;
+                                border: 1px solid #ddd;
+                                border-radius: 3px;
+                                font-size: 12px;
+                                cursor: pointer;
+                            }
+                            
+                            .preset-btn:hover {
+                                background-color: #e0e0e0;
+                            }
+                            
+                            /* Preset Views */
+                            .preset-views {
+                                background-color: white;
+                                border-radius: 8px;
+                                padding: 15px;
+                                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                            }
+                            
+                            .preset-view-buttons {
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 8px;
+                            }
+                            
+                            .view-btn {
+                                padding: 8px;
+                                background-color: #f0f0f0;
+                                border: 1px solid #ddd;
+                                border-radius: 4px;
+                                cursor: pointer;
+                            }
+                            
+                            .view-btn:hover {
+                                background-color: #e0e0e0;
+                            }
+                            
+                            /* Animation Control */
+                            .animation-control, .playback-control {
+                                background-color: white;
+                                border-radius: 8px;
+                                padding: 15px;
+                                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                                margin-bottom: 20px;
+                            }
+                            
+                            .animation-options {
+                                display: flex;
+                                gap: 10px;
+                                align-items: center;
+                            }
+                            
+                            .anim-checkbox {
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+                                cursor: pointer;
+                            }
+                            
+                            #animation-type {
+                                padding: 5px;
+                                border-radius: 4px;
+                                border: 1px solid #ddd;
+                            }
+                            
+                            .playback-buttons {
+                                display: flex;
+                                gap: 10px;
+                                justify-content: center;
+                            }
+                            
+                            /* Video Timeline */
+                            .video-timeline-container {
+                                margin: 15px 0;
+                            }
+                            
+                            .timeline-info {
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: 12px;
+                                color: #666;
+                                margin-bottom: 5px;
+                            }
+                            
+                            .timeline-slider {
+                                width: 100%;
+                                height: 10px;
+                                background: linear-gradient(to right, #3498db 0%, #3498db 0%, #ddd 0%);
+                                border-radius: 5px;
+                                outline: none;
+                                transition: background 0.3s ease;
+                            }
+                            
+                            .timeline-markers {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-top: 3px;
+                                position: relative;
+                            }
+                            
+                            .timeline-markers span {
+                                width: 1px;
+                                height: 5px;
+                                background-color: #aaa;
+                                position: relative;
+                            }
+                            
+                            .play {
+                                background-color: #27ae60;
+                                color: white;
+                            }
+                            
+                            .pause {
+                                background-color: #e67e22;
+                                color: white;
+                            }
+                            
+                            .play:hover, .pause:hover {
+                                opacity: 0.9;
+                                transform: translateY(-2px);
+                            }
+                            
+                            /* Control Actions */
+                            .control-actions {
+                                display: flex;
+                                gap: 10px;
+                            }
+                            
+                            .action-btn {
+                                flex: 1;
+                                padding: 10px;
+                                border: none;
+                                border-radius: 4px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: all 0.3s;
+                            }
+                            
+                            .reset {
+                                background-color: #f0f0f0;
+                                color: #333;
+                            }
+                            
+                            .export {
+                                background-color: #3498db;
+                                color: white;
+                            }
+                            
+                            .action-btn:hover {
+                                opacity: 0.9;
+                                transform: translateY(-2px);
+                            }
+                            
+                            /* Video Preview */
+                            .video-preview-container {
+                                width: 100%;
+                                max-width: 500px;
+                                background-color: #f9f9f9;
+                                border-radius: 8px;
+                                padding: 20px;
+                                perspective: 1500px;
+                                position: sticky;
+                                top: 20px;
+                                transition: all 0.3s ease;
+                            }
+                            
+                            #video-wrapper {
+                                width: 100%;
+                                transform-style: preserve-3d;
+                                transition: transform 0.5s ease;
+                            }
+                            
+                            .rotate-container {
+                                transform-style: preserve-3d;
+                                transition: transform 0.5s ease;
+                                transform-origin: center center;
+                            }
+                            
+                            #video-preview {
+                                width: 100%;
+                                border-radius: 0;
+                                display: none;
+                            }
+                            
+                            /* Hide video controls */
+                            #video-preview::-webkit-media-controls-panel,
+                            #video-preview::-webkit-media-controls-play-button,
+                            #video-preview::-webkit-media-controls-start-playback-button {
+                                display: none !important;
+                                -webkit-appearance: none !important;
+                            }
+                            
+                            .tv-monitor-border {
+                                background: #2b2a2a;
+                                border-radius: 0;
+                                padding: 5px 5px 30px 5px;
+                                box-shadow: 
+                                    0 20px 80px rgba(0,0,0,0.6),
+                                    0 10px 30px rgba(0,0,0,0.4);
+                                position: relative;
+                                overflow: visible;
+                                transform-style: preserve-3d;
+                                border: 1px solid #111;
+                                margin-bottom: 20px;
+                            }
+                            
+                            /* Left side panel */
+                            .tv-monitor-border .side-panel-left {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                bottom: 0;
+                                width: 15px;
+                                background-color: #777676;
+                                transform-style: preserve-3d;
+                                transform: translateZ(-14px) rotateY(291deg);
+                                left: -6px;
+                                transform-origin: left center;
+                                box-shadow: inset 0 0 20px rgba(139, 139, 139, 0.8);
+                            }
+                            
+                            /* Right side panel */
+                            .tv-monitor-border .side-panel-right {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                bottom: 0;
+                                width: 15px;
+                                background-color: #777676;
+                                transform-style: preserve-3d;
+                                transform: translateZ(-15px) rotateY(84deg);
+                                right: -2px;
+                                transform-origin: right center;
+                                box-shadow: inset 0 0 20px rgba(139, 139, 139, 0.8);
+                            }
+                            
+                            /* TV base - bottom part */
+                            .tv-monitor-border .tv-bottom {
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                right: 0;
+                                height: 25px;
+                                background: linear-gradient(to bottom, #686868, #727171);
+                                border-bottom-left-radius: 0;
+                                border-bottom-right-radius: 0;
+                            }
+                            
+                            /* Wall shadow */
+                            .tv-monitor-border .wall-shadow {
+                                content: '';
+                                position: absolute;
+                                bottom: -25px;
+                                left: -50px;
+                                right: -50px;
+                                height: 30px;
+                                background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
+                                z-index: -2;
+                                transform: rotateX(70deg);
+                                filter: blur(5px);
+                            }
+                            
+                            /* Screen frame inner */
+                            .tv-monitor-border #video-wrapper {
+                                border: none;
+                                position: relative;
+                                border-radius: 0;
+                                overflow: hidden;
+                                box-shadow: 
+                                    inset 0 0 0 1px rgba(255,255,255,0.05),
+                                    inset 0 0 30px rgba(0,0,0,0.8);
+                            }
+                            
+                            /* Screen effect */
+                            .tv-monitor-border #video-wrapper::before {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background: linear-gradient(135deg, 
+                                    rgba(255,255,255,0.05) 0%, 
+                                    transparent 40%, 
+                                    transparent 60%, 
+                                    rgba(255,255,255,0.05) 100%);
+                                z-index: 10;
+                                pointer-events: none;
+                            }
+                            
+                            /* Video content */
+                            .tv-monitor-border #video-preview {
+                                display: block;
+                                box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+                                filter: brightness(1.1) contrast(1.1);
+                            }
+                            
+                            /* Power indicator light */
+                            .tv-monitor-border .power-light {
+                                position: absolute;
+                                bottom: 10px;
+                                right: 18px;
+                                width: 6px;
+                                height: 6px;
+                                background-color: #f00;
+                                border-radius: 50%;
+                                box-shadow: 
+                                    0 0 3px #f00,
+                                    0 0 6px rgba(255,0,0,0.8);
+                                animation: blink 5s infinite;
+                                z-index: 20; /* Ensure power light is above other elements */
+                            }
+                            
+                            @keyframes blink {
+                                0%, 98%, 100% { opacity: 1; }
+                                99% { opacity: 0.5; }
+                            }
+                            
+                            /* TV Logo */
+                            .tv-monitor-border .tv-logo {
+                                position: absolute;
+                                bottom: 5px;
+                                left: 18px;
+                                font-size: 9px;
+                                color: #ffffff;
+                                text-transform: uppercase;
+                                letter-spacing: 1px;
+                                font-weight: bold;
+                                text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+                                z-index: 20; /* Ensure logo is above other elements */
+                            }
+                            
+                            /* Control buttons */
+                            .tv-monitor-border .tv-button {
+                                position: absolute;
+                                bottom: 9px;
+                                width: 8px;
+                                height: 8px;
+                                background: linear-gradient(145deg, #ffffff, #d1d1d1);
+                                border-radius: 50%;
+                                border: 1px solid #666;
+                                box-shadow: 
+                                    inset 0 1px 1px rgba(255,255,255,0.1),
+                                    0 1px 2px rgba(0,0,0,0.3);
+                                z-index: 20; /* Ensure buttons are above other elements */
+                            }
+                            
+                            .tv-monitor-border .tv-button-1 { right: 40px; }
+                            .tv-monitor-border .tv-button-2 { 
+                                right: 58px;
+                                background: linear-gradient(145deg, #0f0, #0a0);
+                                box-shadow: 
+                                    inset 0 1px 1px rgba(255, 255, 255, 0.795),
+                                    0 0 5px rgba(0,255,0,0.8);
+                                animation: greenBlink 2s infinite;
+                            }
+                            .tv-monitor-border .tv-button-3 { right: 76px; }
+                            
+                            @keyframes greenBlink {
+                                0%, 100% { 
+                                    background: linear-gradient(145deg, #0f0, #0a0);
+                                    box-shadow: 0 0 5px rgba(0,255,0,0.8);
+                                }
+                                50% { 
+                                    background: linear-gradient(145deg, #0a0, #050);
+                                    box-shadow: 0 0 2px rgba(0,255,0,0.4);
+                                }
+                            }
+                            
+                            /* Top vents */
+                            .tv-monitor-border .tv-vents {
+                                position: absolute;
+                                top: 8px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: 80px;
+                                height: 4px;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+                            
+                            .tv-monitor-border .tv-vent {
+                                width: 8px;
+                                height: 2px;
+                                background-color: #111;
+                                border-radius: 1px;
+                                display: none; /* Hide the tv-vent divs */
+                            }
+                            
+                            /* 3D Monitor Frame - Side Panels */
+                            /* Enhanced 3D Bottom Frame */
+                            .tv-monitor-border .tv-bottom-edge {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                border-radius: 2px;
+                                left: 0;
+                                right: 0;
+                                height: 15px;
+                                background-color: #111;
+                                transform-style: preserve-3d;
+                                transform: translateY(1px) rotateX(97deg);
+                                transform-origin: bottom center;
+                                box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+                                z-index: 1; /* Lower z-index than logo and buttons */
+                            }
+                            
+                            /* Corner pieces */
+                            .tv-monitor-border .corner-piece {
+                                position: absolute;
+                                width: 10px;
+                                height: 10px;
+                                background-color: #111;
+                                transform-style: preserve-3d;
+                                z-index: 1;
+                            }
+                            
+                            /* Front-left corner */
+                            .tv-monitor-border .corner-front-left {
+                                bottom: 0;
+                                left: 0;
+                                transform: translateZ(-5px) rotateX(90deg) rotateY(-90deg);
+                                transform-origin: left bottom;
+                            }
+                            
+                            /* Front-right corner */
+                            .tv-monitor-border .corner-front-right {
+                                bottom: 0;
+                                right: 0;
+                                transform: translateZ(-5px) rotateX(90deg) rotateY(90deg);
+                                transform-origin: right bottom;
+                            }
+                            
+                            /* TV Stand */
+                            .tv-monitor-border .tv-stand {
+                                position: absolute;
+                                bottom: -30px;
+                                left: 50%;
+                                width: 180px;
+                                height: 15px;
+                                background: linear-gradient(to bottom, #333, #111);
+                                transform: translateX(-50%);
+                                transform-style: preserve-3d;
+                                border-radius: 50%;
+                                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+                                z-index: 0; /* Lowest z-index */
+                            }
+                            
+                            /* TV Stand neck */
+                            .tv-monitor-border .tv-stand-neck {
+                                position: absolute;
+                                bottom: -15px;
+                                left: 50%;
+                                width: 40px;
+                                height: 15px;
+                                background: linear-gradient(to bottom, #222, #111);
+                                transform: translateX(-50%);
+                                transform-style: preserve-3d;
+                                border-bottom-left-radius: 10px;
+                                border-bottom-right-radius: 10px;
+                                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+                                z-index: 1; /* Lower z-index than logo and buttons */
+                            }
+                            
+                            /* Responsive Adjustments */
+                            @media (max-width: 768px) {
+                                .video-rotate-layout {
+                                    flex-direction: column-reverse;
+                                }
+                                
+                                .controls-column {
+                                    flex: none;
+                                    width: 100%;
+                                    max-height: none;
+                                    overflow-y: visible;
+                                }
+                                
+                                .preview-column {
+                                    width: 100%;
+                                }
+                                
+                                .video-preview-container {
+                                    position: static;
+                                    margin-bottom: 20px;
+                                }
+                            }
+
+                            .slider {
+                                width: 100%;
+                                height: 8px;
+                                background: #ddd;
+                                outline: none;
+                                border-radius: 4px;
+                                transition: all 0.3s;
+                                margin: 10px 0;
+                            }
+                            
+                            .rotate-slider {
+                                width: 100%;
+                                height: 8px;
+                                background: #ddd;
+                                outline: none;
+                                border-radius: 4px;
+                                transition: all 0.3s;
+                                margin: 10px 0;
+                            }
+                            
+                            .enhanced-slider {
+                                height: 12px;
+                                background: linear-gradient(to right, #f0f0f0, #ddd);
+                                cursor: pointer;
+                            }
+                            
+                            .rotate-enhanced-slider {
+                                height: 12px;
+                                background: linear-gradient(to right, #f0f0f0, #ddd);
+                                cursor: pointer;
+                            }
+                            
+                            .rotate-enhanced-slider::-webkit-slider-thumb {
+                                -webkit-appearance: none;
+                                appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background: currentColor;
+                                cursor: pointer;
+                                border: 2px solid white;
+                            }
+                            
+                            .rotate-enhanced-slider::-moz-range-thumb {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background: currentColor;
+                                cursor: pointer;
+                                border: 2px solid white;
+                            }
+                            
+                            .x-axis-control .rotate-enhanced-slider {
+                                color: #e74c3c;
+                            }
+                            
+                            .y-axis-control .rotate-enhanced-slider {
+                                color: #2ecc71;
+                            }
+                            
+                            .z-axis-control .rotate-enhanced-slider {
+                                color: #3498db;
+                            }
+                            
+                            .scale-control .rotate-enhanced-slider {
+                                color: #9b59b6;
+                            }
+                            
+                            .slider-container {
+                                position: relative;
+                                padding: 0 10px;
+                                margin-bottom: 15px;
+                            }
+                            
+                            .slider-marks {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 5px;
+                                color: #777;
+                                font-size: 11px;
+                            }
+
+                            .video-options {
+                                display: flex;
+                                justify-content: center;
+                                gap: 15px;
+                                margin-top: 10px;
+                            }
+                            
+                            .option-checkbox {
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+                                cursor: pointer;
+                            }
+                            
+                            /* TV Logo Customization */
+                            .tv-logo-customization {
+                                background-color: white;
+                                border-radius: 8px;
+                                padding: 15px;
+                                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                                margin-bottom: 20px;
+                            }
+                            
+                            .logo-input-container {
+                                display: flex;
+                                gap: 8px;
+                                margin-top: 8px;
+                            }
+                            
+                            #tv-logo-text {
+                                flex: 1;
+                                padding: 8px;
+                                border: 1px solid #ddd;
+                                border-radius: 4px;
+                                font-size: 14px;
+                            }
+                        </style>
+                        
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // DOM Elements
+                                const videoInput = document.getElementById('video-input');
+                                const videoPreview = document.getElementById('video-preview');
+                                const videoWrapper = document.getElementById('video-wrapper');
+                                const rotationControls = document.getElementById('rotation-controls');
+                                const uploadSection = document.querySelector('.upload-section');
+                                
+                                // Sliders
+                                const xSlider = document.getElementById('x-slider');
+                                const ySlider = document.getElementById('y-slider');
+                                const zSlider = document.getElementById('z-slider');
+                                const scaleSlider = document.getElementById('scale-slider');
+                                
+                                // Value displays
+                                const xValue = document.getElementById('x-value');
+                                const yValue = document.getElementById('y-value');
+                                const zValue = document.getElementById('z-value');
+                                const scaleValue = document.getElementById('scale-value');
+                                
+                                // Buttons
+                                const presetBtns = document.querySelectorAll('.preset-btn');
+                                const viewBtns = document.querySelectorAll('.view-btn');
+                                const resetBtn = document.getElementById('reset-btn');
+                                const exportBtn = document.getElementById('export-btn');
+                                const playBtn = document.getElementById('play-btn');
+                                const pauseBtn = document.getElementById('pause-btn');
+                                const autoRotate = document.getElementById('auto-rotate');
+                                const animationType = document.getElementById('animation-type');
+                                const tvBorder = document.getElementById('tv-border');
+                                const tvLogoText = document.getElementById('tv-logo-text');
+                                const applyLogoBtn = document.getElementById('apply-logo-btn');
+                                const videoTimeline = document.getElementById('video-timeline');
+                                const currentTimeDisplay = document.getElementById('current-time');
+                                const totalTimeDisplay = document.getElementById('total-time');
+                                
+                                // Rotation state
+                                let rotation = {
+                                    x: 0,
+                                    y: 0,
+                                    z: 0,
+                                    scale: 100
+                                };
+                                
+                                let animationId = null;
+                                
+                                // Handle file upload
+                                videoInput.addEventListener('change', function(e) {
+                                    const file = e.target.files[0];
+                                    if (file) {
+                                        // Create object URL for the video
+                                        const videoURL = URL.createObjectURL(file);
+                                        videoPreview.src = videoURL;
+                                        videoPreview.style.display = 'block';
+                                        
+                                        // Show controls and hide upload section
+                                        rotationControls.style.display = 'flex';
+                                        uploadSection.style.display = 'none';
+                                        
+                                        // Reset rotation
+                                        resetRotation();
+                                    }
+                                });
+                                
+                                // Update rotation based on sliders
+                                xSlider.addEventListener('input', function() {
+                                    rotation.x = parseInt(this.value);
+                                    stopAnimation();
+                                    updateRotation();
+                                });
+                                
+                                ySlider.addEventListener('input', function() {
+                                    rotation.y = parseInt(this.value);
+                                    stopAnimation();
+                                    updateRotation();
+                                });
+                                
+                                zSlider.addEventListener('input', function() {
+                                    rotation.z = parseInt(this.value);
+                                    stopAnimation();
+                                    updateRotation();
+                                });
+                                
+                                scaleSlider.addEventListener('input', function() {
+                                    rotation.scale = parseInt(this.value);
+                                    updateRotation();
+                                });
+                                
+                                // Preset angle buttons
+                                presetBtns.forEach(btn => {
+                                    btn.addEventListener('click', function() {
+                                        const axis = this.getAttribute('data-axis');
+                                        const value = parseInt(this.getAttribute('data-value'));
+                                        
+                                        // Set the appropriate axis value
+                                        rotation[axis] = value;
+                                        stopAnimation();
+                                        updateRotation();
+                                    });
+                                });
+                                
+                                // Preset view buttons
+                                viewBtns.forEach(btn => {
+                                    btn.addEventListener('click', function() {
+                                        rotation.x = parseInt(this.getAttribute('data-x'));
+                                        rotation.y = parseInt(this.getAttribute('data-y'));
+                                        rotation.z = parseInt(this.getAttribute('data-z'));
+                                        
+                                        stopAnimation();
+                                        updateRotation();
+                                    });
+                                });
+                                
+                                // Reset rotation
+                                resetBtn.addEventListener('click', resetRotation);
+                                
+                                // Export button
+                                exportBtn.addEventListener('click', function() {
+                                    alert('In a full implementation, this would export your rotated video.');
+                                });
+                                
+                                // Play/Pause video controls
+                                playBtn.addEventListener('click', function() {
+                                    videoPreview.play();
+                                });
+                                
+                                pauseBtn.addEventListener('click', function() {
+                                    videoPreview.pause();
+                                });
+                                
+                                // Initialize video duration when metadata is loaded
+                                videoPreview.addEventListener('loadedmetadata', function() {
+                                    videoTimeline.max = Math.floor(videoPreview.duration);
+                                    totalTimeDisplay.textContent = formatTime(videoPreview.duration);
+                                });
+                                
+                                // Update timeline as video plays
+                                videoPreview.addEventListener('timeupdate', function() {
+                                    if (!videoTimeline.dragging) {
+                                        videoTimeline.value = Math.floor(videoPreview.currentTime);
+                                        currentTimeDisplay.textContent = formatTime(videoPreview.currentTime);
+                                        
+                                        // Update timeline background
+                                        const percent = (videoPreview.currentTime / videoPreview.duration) * 100;
+                                        videoTimeline.style.background = `linear-gradient(to right, #3498db ${percent}%, #ddd ${percent}%)`;
+                                    }
+                                });
+                                
+                                // Allow seeking through the video
+                                videoTimeline.addEventListener('mousedown', function() {
+                                    videoTimeline.dragging = true;
+                                });
+                                
+                                videoTimeline.addEventListener('input', function() {
+                                    currentTimeDisplay.textContent = formatTime(videoTimeline.value);
+                                    
+                                    // Update timeline background while dragging
+                                    const percent = (videoTimeline.value / videoTimeline.max) * 100;
+                                    videoTimeline.style.background = `linear-gradient(to right, #3498db ${percent}%, #ddd ${percent}%)`;
+                                });
+                                
+                                videoTimeline.addEventListener('change', function() {
+                                    videoPreview.currentTime = videoTimeline.value;
+                                    videoTimeline.dragging = false;
+                                });
+                                
+                                // Format time in MM:SS format
+                                function formatTime(seconds) {
+                                    const minutes = Math.floor(seconds / 60);
+                                    seconds = Math.floor(seconds % 60);
+                                    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                                }
+                                
+                                // Auto-rotate
+                                autoRotate.addEventListener('change', function() {
+                                    if (this.checked) {
+                                        startAnimation();
+                                    } else {
+                                        stopAnimation();
+                                    }
+                                });
+                                
+                                // Animation type change
+                                animationType.addEventListener('change', function() {
+                                    if (autoRotate.checked) {
+                                        stopAnimation();
+                                        startAnimation();
+                                    }
+                                });
+                                
+                                // TV Monitor border toggle
+                                tvBorder.addEventListener('change', function() {
+                                    const previewContainer = document.querySelector('.video-preview-container');
+                                    
+                                    if (this.checked) {
+                                        // First, check if we need to move elements back to original state
+                                        const existingRotateContainer = document.querySelector('.rotate-container');
+                                        if (existingRotateContainer) {
+                                            const parent = existingRotateContainer.parentNode;
+                                            parent.insertBefore(videoWrapper, existingRotateContainer);
+                                            parent.removeChild(existingRotateContainer);
+                                            
+                                            // Make sure any transforms are applied directly to the video wrapper
+                                            videoWrapper.style.transform = existingRotateContainer.style.transform;
+                                        }
+                                        
+                                        // Add TV border class
+                                        previewContainer.classList.add('tv-monitor-border');
+                                        
+                                        // Now wrap BOTH the TV border and the video in a rotate container
+                                        const rotateContainer = document.createElement('div');
+                                        rotateContainer.className = 'rotate-container';
+                                        
+                                        // Move the entire preview container inside the rotate container
+                                        const parent = previewContainer.parentNode;
+                                        
+                                        // Create a new outer container to be the rotate target
+                                        const outerContainer = document.createElement('div');
+                                        outerContainer.className = 'rotate-outer-container';
+                                        outerContainer.style.transformStyle = 'preserve-3d';
+                                        outerContainer.style.perspective = '1500px';
+                                        
+                                        // Insert the new container in the DOM
+                                        parent.insertBefore(outerContainer, previewContainer);
+                                        
+                                        // Move the preview container inside it
+                                        outerContainer.appendChild(previewContainer);
+                                        
+                                        // Apply any existing transform values
+                                        outerContainer.style.transform = `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) rotateZ(${rotation.z}deg) scale(${rotation.scale/100})`;
+                                        
+                                        // Add TV elements
+                                        if (!document.querySelector('.power-light')) {
+                                            // Add power light
+                                            const powerLight = document.createElement('div');
+                                            powerLight.className = 'power-light';
+                                            previewContainer.appendChild(powerLight);
+                                            
+                                            // Add TV buttons
+                                            for (let i = 1; i <= 3; i++) {
+                                                const button = document.createElement('div');
+                                                button.className = `tv-button tv-button-${i}`;
+                                                previewContainer.appendChild(button);
+                                            }
+                                            
+                                            // Add TV logo
+                                            const tvLogo = document.createElement('div');
+                                            tvLogo.className = 'tv-logo';
+                                            tvLogo.textContent = tvLogoText.value.trim() || 'UltraView HD';
+                                            previewContainer.appendChild(tvLogo);
+                                            
+                                            // Create wall shadow
+                                            const wallShadow = document.createElement('div');
+                                            wallShadow.className = 'wall-shadow';
+                                            previewContainer.appendChild(wallShadow);
+                                            
+                                            // Add TV base
+                                            
+                                            // Add TV bottom
+                                            const tvBottom = document.createElement('div');
+                                            tvBottom.className = 'tv-bottom';
+                                            previewContainer.appendChild(tvBottom);
+                                            
+                                            // Add bottom edge (for 3D effect)
+                                            const tvBottomEdge = document.createElement('div');
+                                            tvBottomEdge.className = 'tv-bottom-edge';
+                                            previewContainer.appendChild(tvBottomEdge);
+                                            
+                                            // Add TV stand neck
+                                            const tvStandNeck = document.createElement('div');
+                                            tvStandNeck.className = 'tv-stand-neck';
+                                            previewContainer.appendChild(tvStandNeck);
+                                            
+                                            // Add TV stand
+                                            const tvStand = document.createElement('div');
+                                            tvStand.className = 'tv-stand';
+                                            previewContainer.appendChild(tvStand);
+                                            
+                                            // Add side panels
+                                            const sidePanelLeft = document.createElement('div');
+                                            sidePanelLeft.className = 'side-panel-left';
+                                            previewContainer.appendChild(sidePanelLeft);
+                                            
+                                            const sidePanelRight = document.createElement('div');
+                                            sidePanelRight.className = 'side-panel-right';
+                                            previewContainer.appendChild(sidePanelRight);
+                                            
+                                            // Add corner pieces
+                                            const cornerFrontLeft = document.createElement('div');
+                                            cornerFrontLeft.className = 'corner-piece corner-front-left';
+                                            previewContainer.appendChild(cornerFrontLeft);
+                                            
+                                            const cornerFrontRight = document.createElement('div');
+                                            cornerFrontRight.className = 'corner-piece corner-front-right';
+                                            previewContainer.appendChild(cornerFrontRight);
+                                            
+                                            // Add vents
+                                            const vents = document.createElement('div');
+                                            vents.className = 'tv-vents';
+                                            for (let i = 0; i < 6; i++) {
+                                                const vent = document.createElement('div');
+                                                vent.className = 'tv-vent';
+                                                vents.appendChild(vent);
+                                            }
+                                            previewContainer.appendChild(vents);
+                                        }
+                                    } else {
+                                        // Remove TV border class
+                                        previewContainer.classList.remove('tv-monitor-border');
+                                        
+                                        // Remove TV elements
+                                        const elements = previewContainer.querySelectorAll('.power-light, .tv-button, .tv-logo, .tv-vents, .wall-shadow, .tv-bottom, .side-panel-left, .side-panel-right, .tv-bottom-edge, .tv-stand-neck, .tv-stand, .corner-piece');
+                                        elements.forEach(el => el.remove());
+                                        
+                                        // Move the preview container back to its original position
+                                        const outerContainer = document.querySelector('.rotate-outer-container');
+                                        if (outerContainer) {
+                                            const parent = outerContainer.parentNode;
+                                            // Get transform from outer container before removing it
+                                            const currentTransform = outerContainer.style.transform;
+                                            
+                                            // Move preview container back to original parent
+                                            parent.insertBefore(previewContainer, outerContainer);
+                                            parent.removeChild(outerContainer);
+                                            
+                                            // Apply transform directly to video wrapper
+                                            videoWrapper.style.transform = currentTransform;
+                                        }
+                                    }
+                                    
+                                    // Update rotation to apply to the correct element
+                                    updateRotation();
+                                });
+                                
+                                // TV Stand toggle
+                                const tvStandToggle = document.getElementById('tv-stand-toggle');
+                                tvStandToggle.addEventListener('change', function() {
+                                    const tvStandNeck = document.querySelector('.tv-stand-neck');
+                                    const tvStand = document.querySelector('.tv-stand');
+                                    
+                                    if (tvStandNeck && tvStand) {
+                                        if (this.checked) {
+                                            tvStandNeck.style.display = 'block';
+                                            tvStand.style.display = 'block';
+                                        } else {
+                                            tvStandNeck.style.display = 'none';
+                                            tvStand.style.display = 'none';
+                                        }
+                                    }
+                                });
+                                
+                                // TV Logo customization
+                                applyLogoBtn.addEventListener('click', function() {
+                                    const logoText = tvLogoText.value.trim();
+                                    const tvLogo = document.querySelector('.tv-logo');
+                                    
+                                    if (tvLogo && logoText) {
+                                        tvLogo.textContent = logoText;
+                                    }
+                                });
+                                
+                                // Update rotation
+                                function updateRotation() {
+                                    // Check if in TV mode or normal mode
+                                    const isInTVMode = tvBorder.checked;
+                                    let targetElement;
+                                    
+                                    if (isInTVMode) {
+                                        targetElement = document.querySelector('.rotate-outer-container');
+                                        // If TV mode is active, ensure video wrapper has no transform
+                                        if (videoWrapper) videoWrapper.style.transform = 'none';
+                                    } else {
+                                        targetElement = videoWrapper;
+                                    }
+                                    
+                                    // Apply rotation and scale with transform-origin centered
+                                    if (targetElement) {
+                                        // Apply perspective first to ensure consistent 3D rotation
+                                        targetElement.style.transform = 
+                                            `perspective(2000px) 
+                                             rotateX(${rotation.x}deg) 
+                                             rotateY(${rotation.y}deg) 
+                                             rotateZ(${rotation.z}deg) 
+                                             scale3d(${rotation.scale/100}, ${rotation.scale/100}, ${rotation.scale/100})`;
+                                        
+                                        // Ensure transform origin stays centered
+                                        targetElement.style.transformOrigin = 'center center';
+                                    }
+                                    
+                                    // Update sliders
+                                    xSlider.value = rotation.x;
+                                    ySlider.value = rotation.y;
+                                    zSlider.value = rotation.z;
+                                    scaleSlider.value = rotation.scale;
+                                    
+                                    // Update value displays
+                                    xValue.textContent = `${rotation.x}°`;
+                                    yValue.textContent = `${rotation.y}°`;
+                                    zValue.textContent = `${rotation.z}°`;
+                                    scaleValue.textContent = `${rotation.scale}%`;
+                                }
+                                
+                                // Reset rotation
+                                function resetRotation() {
+                                    rotation.x = 0;
+                                    rotation.y = 0;
+                                    rotation.z = 0;
+                                    rotation.scale = 100;
+                                    
+                                    stopAnimation();
+                                    autoRotate.checked = false;
+                                    
+                                    updateRotation();
+                                }
+                                
+                                // Animation
+                                function startAnimation() {
+                                    stopAnimation();
+                                    
+                                    const axis = animationType.value;
+                                    let speed = 1;
+                                    
+                                    animationId = setInterval(() => {
+                                        rotation[axis] = (rotation[axis] + speed) % 360;
+                                        updateRotation();
+                                    }, 30);
+                                }
+                                
+                                function stopAnimation() {
+                                    if (animationId !== null) {
+                                        clearInterval(animationId);
+                                        animationId = null;
+                                    }
+                                }
+                                
+                                // Initialize
+                                updateRotation();
+                            });
+                        </script>
                         
                     </div>
                 </div>
