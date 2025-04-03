@@ -9,6 +9,309 @@
     <link rel="stylesheet" href="../css/tool.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <meta name="tool-icon" content="fas fa-cut">
+    <style>
+        .loan-calculator {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: var(--card-bg);
+            padding: 12px 15px;
+            border-radius: 4px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .include-checkbox {
+            transform: scale(1.8);
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .gst-label {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-color);
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        
+        .gst-label i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        .optional-text {
+            font-weight: normal;
+            font-size: 14px;
+            color: var(--text-color);
+            opacity: 0.7;
+            font-style: italic;
+        }
+        
+        .gst-option label {
+            display: inline;
+            margin-bottom: 0;
+        }
+        
+        #gst-rate-container {
+            margin-top: 10px;
+        }
+        
+        #gst-rate-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d32f2f;
+        }
+        
+        .result-section {
+            margin-top: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .result-section h4 {
+            margin-top: 0;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: var(--bg-color);
+            border-radius: 4px;
+        }
+        
+        .result-item p {
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .result-item p:first-child {
+            font-weight: 600;
+        }
+        
+        .amortization-container {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        
+        #amortization-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        #amortization-table th, 
+        #amortization-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+        
+        #amortization-table th {
+            background-color: var(--primary-color);
+            font-weight: 600;
+            text-align: center;
+            color: white;
+        }
+        
+        #amortization-table tr:hover {
+            background-color: var(--bg-color);
+        }
+        
+        .gst-info-row {
+            background-color: var(--card-bg);
+            font-weight: 500;
+        }
+        
+        .gst-info-row td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 15px;
+            color: var(--text-color);
+        }
+        
+        .separator-row {
+            height: 10px;
+            background-color: var(--bg-color);
+        }
+        
+        .separator-row td {
+            border-bottom: 2px dashed var(--border-color);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .loan-calculator,
+            .result-section {
+                max-width: 100%;
+                padding: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            #amortization-table th, 
+            #amortization-table td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+        
+        .tool-description {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            line-height: 1.6;
+        }
+        
+        .tool-description h3 {
+            margin-top: 0;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tool-description h4 {
+            margin-top: 25px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .tool-description p {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .tool-description ul, 
+        .tool-description ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .tool-description li {
+            margin-bottom: 8px;
+        }
+        
+        .tool-description strong {
+            color: var(--text-color);
+        }
+        
+        .tool-description h3 i,
+        .tool-description h4 i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .icon-list {
+            list-style-type: none;
+            margin-left: 5px;
+        }
+        
+        .icon-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+        }
+        
+        .icon-list li i {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .conclusion {
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin-top: 30px;
+        }
+        
+        .conclusion i {
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body class="theme-default">
     <!-- Header Section -->
@@ -112,6 +415,149 @@
 
                         <!--2025-->
                         
+                        <div class="loan-calculator">
+                            <div class="form-group">
+                                <label for="loan-amount">Loan Amount</label>
+                                <input type="number" id="loan-amount" class="form-control" placeholder="Enter loan amount" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="currency-select">Currency</label>
+                                <select id="currency-select" class="form-control">
+                                    <option value="$" selected>USD ($)</option>
+                                    <option value="€">EUR (€)</option>
+                                    <option value="£">GBP (£)</option>
+                                    <option value="¥">JPY (¥)</option>
+                                    <option value="₹">INR (₹)</option>
+                                    <option value="₩">KRW (₩)</option>
+                                    <option value="C$">CAD (C$)</option>
+                                    <option value="A$">AUD (A$)</option>
+                                    <option value="₽">RUB (₽)</option>
+                                    <option value="¥">CNY (¥)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="interest-rate">Annual Interest Rate (%)</label>
+                                <input type="number" id="interest-rate" class="form-control" placeholder="Enter interest rate" min="0.1" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="loan-term">Loan Term (years)</label>
+                                <input type="number" id="loan-term" class="form-control" placeholder="Enter loan term in years" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="payment-frequency">Payment Frequency</label>
+                                <select id="payment-frequency" class="form-control">
+                                    <option value="12" selected>Monthly</option>
+                                    <option value="26">Bi-weekly</option>
+                                    <option value="52">Weekly</option>
+                                </select>
+                            </div>
+                            <div class="form-group gst-option">
+                                <div class="checkbox-container">
+                                    <label for="include-gst" class="gst-label"><i class="fas fa-plus-circle"></i> Add GST/Tax to Loan Amount <span class="optional-text">(optional)</span></label>
+                                    <input type="checkbox" id="include-gst" class="include-checkbox">
+                                </div>
+                                <div id="gst-rate-container" class="hidden">
+                                    <label for="gst-rate">GST/Tax Rate (%)</label>
+                                    <input type="number" id="gst-rate" class="form-control" placeholder="Enter GST/Tax rate" min="0" max="100" step="0.1" value="10">
+                                </div>
+                            </div>
+                            <button id="calculate-btn" class="btn btn-primary">Calculate</button>
+                            <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                        </div>
+
+                        <div class="result-section" id="result-section">
+                            <h4>Loan Summary</h4>
+                            <div class="result-item">
+                                <p>Monthly Payment:</p>
+                                <p id="monthly-payment">$0.00</p>
+                            </div>
+                            <div class="result-item">
+                                <p>Total Payment:</p>
+                                <p id="total-payment">$0.00</p>
+                            </div>
+                            <div class="result-item">
+                                <p>Total Interest:</p>
+                                <p id="total-interest">$0.00</p>
+                            </div>
+                            
+                            <div class="amortization-container">
+                                <h4>Amortization Schedule</h4>
+                                <table id="amortization-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Payment #</th>
+                                            <th>Payment Amount</th>
+                                            <th>Principal</th>
+                                            <th>Interest</th>
+                                            <th>Remaining Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="amortization-body">
+                                        <!-- Amortization rows will be added here dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-description">
+                            <h3><i class="fas fa-calculator"></i> About Our Loan Calculator</h3>
+                            <p>Our free online Loan Calculator helps you estimate monthly payments, total interest costs, and view a complete amortization schedule for various types of loans. Whether you're planning to get a mortgage, auto loan, personal loan, or business loan, this powerful calculator provides accurate projections to help you make informed financial decisions. With support for multiple currencies and an optional GST/Tax feature, our calculator is designed to work for users worldwide in different financial situations.</p>
+                            
+                            <h4><i class="fas fa-info-circle"></i> How to Use the Loan Calculator</h4>
+                            <p>Using our loan calculator is simple and straightforward:</p>
+                            <ol class="icon-list">
+                                <li><i class="fas fa-dollar-sign"></i> <strong>Enter the loan amount</strong> you wish to borrow</li>
+                                <li><i class="fas fa-globe"></i> <strong>Select your preferred currency</strong> from the dropdown menu</li>
+                                <li><i class="fas fa-percentage"></i> <strong>Specify the annual interest rate</strong> as a percentage</li>
+                                <li><i class="fas fa-calendar-alt"></i> <strong>Input the loan term</strong> in years</li>
+                                <li><i class="fas fa-clock"></i> <strong>Choose the payment frequency</strong> (monthly, bi-weekly, or weekly)</li>
+                                <li><i class="fas fa-plus-circle"></i> <strong>Include GST/Tax</strong> if required for your loan (optional)</li>
+                                <li><i class="fas fa-play-circle"></i> <strong>Click "Calculate"</strong> to see your results</li>
+                            </ol>
+                            
+                            <h4><i class="fas fa-chart-bar"></i> Understanding the Results</h4>
+                            <p>After calculation, you'll receive a comprehensive breakdown of your loan:</p>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-money-bill-wave"></i> <strong>Monthly Payment:</strong> The amount you'll pay each period based on your selected payment frequency</li>
+                                <li><i class="fas fa-coins"></i> <strong>Total Payment:</strong> The sum of all payments over the life of the loan</li>
+                                <li><i class="fas fa-chart-line"></i> <strong>Total Interest:</strong> The total amount of interest you'll pay over the loan's lifetime</li>
+                                <li><i class="fas fa-table"></i> <strong>Amortization Schedule:</strong> A detailed payment-by-payment breakdown showing how each payment is split between principal and interest</li>
+                                <li><i class="fas fa-plus-circle"></i> <strong>GST/Tax Details:</strong> If GST/Tax is included, you'll see the original loan amount, GST/Tax amount, and total loan amount with tax included</li>
+                            </ul>
+                            
+                            <h4><i class="fas fa-star"></i> Why Use Our Loan Calculator?</h4>
+                            <p>Our loan calculator offers several advantages:</p>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-check-circle"></i> <strong>Accuracy:</strong> Uses industry-standard formulas to ensure precise calculations</li>
+                                <li><i class="fas fa-exchange-alt"></i> <strong>Flexibility:</strong> Supports multiple currencies and payment frequencies</li>
+                                <li><i class="fas fa-eye"></i> <strong>Transparency:</strong> Provides a clear breakdown of principal and interest payments</li>
+                                <li><i class="fas fa-mobile-alt"></i> <strong>Convenience:</strong> Works on any device without requiring downloads or installations</li>
+                                <li><i class="fas fa-lock"></i> <strong>Privacy:</strong> All calculations are performed locally in your browser – no data is sent to our servers</li>
+                                <li><i class="fas fa-percentage"></i> <strong>GST/Tax Support:</strong> Includes optional GST/Tax calculation for countries where tax is applicable on loans</li>
+                            </ul>
+                            
+                            <h4><i class="fas fa-hand-holding-usd"></i> Types of Loans You Can Calculate</h4>
+                            <p>This calculator works for various loan types, including:</p>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-home"></i> <strong>Mortgage Loans:</strong> For purchasing homes or real estate properties</li>
+                                <li><i class="fas fa-car"></i> <strong>Auto Loans:</strong> For financing vehicles and automobiles</li>
+                                <li><i class="fas fa-wallet"></i> <strong>Personal Loans:</strong> For consolidating debt or covering personal expenses</li>
+                                <li><i class="fas fa-graduation-cap"></i> <strong>Student Loans:</strong> For financing education costs</li>
+                                <li><i class="fas fa-briefcase"></i> <strong>Business Loans:</strong> For funding business ventures or expansion</li>
+                            </ul>
+                            
+                            <h4><i class="fas fa-piggy-bank"></i> Financial Planning Benefits</h4>
+                            <p>Understanding your loan payments in advance helps you:</p>
+                            <ul class="icon-list">
+                                <li><i class="fas fa-tasks"></i> Create realistic monthly budgets</li>
+                                <li><i class="fas fa-balance-scale"></i> Compare different loan offers</li>
+                                <li><i class="fas fa-search-dollar"></i> Determine affordable loan amounts</li>
+                                <li><i class="fas fa-percentage"></i> Explore how different interest rates affect your payments</li>
+                                <li><i class="fas fa-calendar-check"></i> Plan for future financial commitments</li>
+                            </ul>
+                            
+                            <p class="conclusion"><i class="fas fa-lightbulb"></i> Make smarter financial decisions by using our Loan Calculator today. This free tool empowers you with the knowledge to negotiate better loan terms, avoid excessive debt, and achieve your financial goals more effectively.</p>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -136,6 +582,201 @@
     </footer>
 
     <!-- Scripts -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get DOM elements
+            const loanAmountInput = document.getElementById('loan-amount');
+            const currencySelect = document.getElementById('currency-select');
+            const interestRateInput = document.getElementById('interest-rate');
+            const loanTermInput = document.getElementById('loan-term');
+            const paymentFrequencySelect = document.getElementById('payment-frequency');
+            const includeGSTCheckbox = document.getElementById('include-gst');
+            const gstRateContainer = document.getElementById('gst-rate-container');
+            const gstRateInput = document.getElementById('gst-rate');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const resultSection = document.getElementById('result-section');
+            const monthlyPaymentElement = document.getElementById('monthly-payment');
+            const totalPaymentElement = document.getElementById('total-payment');
+            const totalInterestElement = document.getElementById('total-interest');
+            const amortizationBody = document.getElementById('amortization-body');
+            
+            // Hide result section initially
+            resultSection.style.display = 'none';
+            
+            // Show/hide GST rate field based on checkbox
+            includeGSTCheckbox.addEventListener('change', function() {
+                gstRateContainer.classList.toggle('hidden', !this.checked);
+            });
+            
+            // Add event listeners
+            calculateBtn.addEventListener('click', calculateLoan);
+            resetBtn.addEventListener('click', resetCalculator);
+            
+            function calculateLoan() {
+                // Get input values
+                const principal = parseFloat(loanAmountInput.value);
+                const currency = currencySelect.value;
+                const annualRate = parseFloat(interestRateInput.value) / 100;
+                const years = parseInt(loanTermInput.value);
+                const paymentsPerYear = parseInt(paymentFrequencySelect.value);
+                const includeGST = includeGSTCheckbox.checked;
+                const gstRate = includeGST ? parseFloat(gstRateInput.value) / 100 : 0;
+                
+                // Validate inputs
+                if (!loanAmountInput.value || !interestRateInput.value || !loanTermInput.value) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0 || annualRate <= 0 || years <= 0) {
+                    alert('Please enter valid values for all fields');
+                    return;
+                }
+                
+                if (includeGST && (isNaN(gstRate) || gstRate < 0)) {
+                    alert('Please enter a valid GST rate');
+                    return;
+                }
+                
+                // Apply GST to principal if included
+                let calculatedPrincipal = principal;
+                if (includeGST) {
+                    calculatedPrincipal = principal * (1 + gstRate);
+                }
+                
+                // Calculate loan details
+                const totalPayments = years * paymentsPerYear;
+                const periodicRate = annualRate / paymentsPerYear;
+                
+                // Calculate payment amount using the formula: P = (PV * r * (1 + r)^n) / ((1 + r)^n - 1)
+                const paymentAmount = (calculatedPrincipal * periodicRate * Math.pow(1 + periodicRate, totalPayments)) / 
+                                     (Math.pow(1 + periodicRate, totalPayments) - 1);
+                
+                // Calculate total payment and interest
+                const totalPaid = paymentAmount * totalPayments;
+                const totalInterest = totalPaid - calculatedPrincipal;
+                
+                // Display results
+                const paymentLabel = paymentFrequencySelect.options[paymentFrequencySelect.selectedIndex].text;
+                
+                // Add GST notation if included
+                const gstNotation = includeGST ? ` (incl. ${(gstRate * 100).toFixed(1)}% GST/Tax)` : '';
+                
+                monthlyPaymentElement.textContent = `${currency}${paymentAmount.toFixed(2)} (${paymentLabel})`;
+                totalPaymentElement.textContent = `${currency}${totalPaid.toFixed(2)}${gstNotation}`;
+                totalInterestElement.textContent = `${currency}${totalInterest.toFixed(2)}`;
+                
+                // Generate amortization schedule
+                generateAmortizationSchedule(calculatedPrincipal, periodicRate, paymentAmount, totalPayments, currency, includeGST, gstRate, principal);
+                
+                // Show results
+                resultSection.style.display = 'block';
+            }
+            
+            function generateAmortizationSchedule(principal, periodicRate, paymentAmount, totalPayments, currency, includeGST, gstRate, originalPrincipal) {
+                // Clear previous amortization table
+                amortizationBody.innerHTML = '';
+                
+                let remainingBalance = principal;
+                
+                // Add GST info row if GST is included
+                if (includeGST) {
+                    const gstRow = document.createElement('tr');
+                    gstRow.classList.add('gst-info-row');
+                    gstRow.innerHTML = `
+                        <td colspan="2">Original Loan Amount</td>
+                        <td colspan="3">${currency}${originalPrincipal.toFixed(2)}</td>
+                    `;
+                    amortizationBody.appendChild(gstRow);
+                    
+                    const gstAmountRow = document.createElement('tr');
+                    gstAmountRow.classList.add('gst-info-row');
+                    const gstAmount = originalPrincipal * gstRate;
+                    gstAmountRow.innerHTML = `
+                        <td colspan="2">GST/Tax Amount (${(gstRate * 100).toFixed(1)}%)</td>
+                        <td colspan="3">${currency}${gstAmount.toFixed(2)}</td>
+                    `;
+                    amortizationBody.appendChild(gstAmountRow);
+                    
+                    const totalPrincipalRow = document.createElement('tr');
+                    totalPrincipalRow.classList.add('gst-info-row');
+                    totalPrincipalRow.innerHTML = `
+                        <td colspan="2">Total Loan Amount with GST/Tax</td>
+                        <td colspan="3">${currency}${principal.toFixed(2)}</td>
+                    `;
+                    amortizationBody.appendChild(totalPrincipalRow);
+                    
+                    // Add separator
+                    const separatorRow = document.createElement('tr');
+                    separatorRow.classList.add('separator-row');
+                    separatorRow.innerHTML = `<td colspan="5"></td>`;
+                    amortizationBody.appendChild(separatorRow);
+                }
+                
+                // Only show first 12 payments
+                const maxDetailedRows = 12;
+                
+                for (let paymentNumber = 1; paymentNumber <= totalPayments; paymentNumber++) {
+                    const interestPayment = remainingBalance * periodicRate;
+                    const principalPayment = paymentAmount - interestPayment;
+                    remainingBalance -= principalPayment;
+                    
+                    // Ensure we don't have negative remaining balance due to rounding
+                    if (remainingBalance < 0) remainingBalance = 0;
+                    
+                    // For first few payments, show details
+                    if (paymentNumber <= maxDetailedRows) {
+                        addAmortizationRow(paymentNumber, paymentAmount, principalPayment, interestPayment, remainingBalance, currency);
+                    }
+                }
+                
+                // If we have more than maxDetailedRows payments, add a note row
+                if (totalPayments > maxDetailedRows) {
+                    // Add note row
+                    const noteRow = document.createElement('tr');
+                    const noteCell = document.createElement('td');
+                    noteCell.colSpan = 5;
+                    noteCell.textContent = `Showing first ${maxDetailedRows} payments of ${totalPayments} total payments.`;
+                    noteCell.style.textAlign = 'center';
+                    noteCell.style.padding = '15px';
+                    noteCell.style.fontStyle = 'italic';
+                    noteRow.appendChild(noteCell);
+                    amortizationBody.appendChild(noteRow);
+                }
+            }
+            
+            function addAmortizationRow(paymentNumber, paymentAmount, principalPayment, interestPayment, remainingBalance, currency) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${paymentNumber}</td>
+                    <td>${currency}${paymentAmount.toFixed(2)}</td>
+                    <td>${currency}${principalPayment.toFixed(2)}</td>
+                    <td>${currency}${interestPayment.toFixed(2)}</td>
+                    <td>${currency}${remainingBalance.toFixed(2)}</td>
+                `;
+                amortizationBody.appendChild(row);
+            }
+            
+            function resetCalculator() {
+                // Reset form fields to blank values
+                loanAmountInput.value = '';
+                currencySelect.value = "$";
+                interestRateInput.value = '';
+                loanTermInput.value = '';
+                paymentFrequencySelect.value = 12;
+                includeGSTCheckbox.checked = false;
+                gstRateInput.value = 10;
+                gstRateContainer.classList.add('hidden');
+                
+                // Hide results
+                resultSection.style.display = 'none';
+                
+                // Clear amortization table
+                amortizationBody.innerHTML = '';
+            }
+        });
+    </script>
     <script src="../js/main.js"></script>
 </body>
 </html>             
